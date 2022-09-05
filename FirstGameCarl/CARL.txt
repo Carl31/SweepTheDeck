@@ -1,1 +1,1 @@
-Guys if your reading this then uploading to git via the command line worked!!
+Uploaded this unity proj from CLI - removed Library and Logs dirs
