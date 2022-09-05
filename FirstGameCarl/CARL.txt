@@ -1,1 +1,0 @@
-Uploaded this unity proj from CLI - removed Library and Logs dirs
