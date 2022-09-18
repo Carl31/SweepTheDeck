@@ -16,8 +16,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = 5f;
         jumpForce = 500f;
         moveLeft = false;
-        moveRight = false;
-        
+        moveRight = false;  
     }
 
     public void MoveLeft()
