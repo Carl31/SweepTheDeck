@@ -12,12 +12,17 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
     public Button[] myBuyButtons;
+    public GameObject[] buyButtonGO;
+    public CategorySelector cs;
    
     void Start()
     {
-        coins = PlayerPrefs.GetInt("COINS");
+        //coins = PlayerPrefs.GetInt("COINS");
         for(int i = 0; i < shopItems.Length; i++)
-            shopPanelsGO[i].SetActive(true);
+        {
+            if(shopItems[i].category == cs.getCategory())
+                shopPanelsGO[i].SetActive(true);
+        }
         coinUI.text = "Coins: " + coins.ToString();
         LoadPanels();
         CheckPurchaseable();
@@ -31,6 +36,23 @@ public class ShopManager : MonoBehaviour
             shopPanels[i].statsText.text = "Stats: " + shopItems[i].stats.ToString();
             shopPanels[i].costText.text = "Price: " + shopItems[i].cost.ToString();
         }
+    }
+
+    public void LoadNewCategory()
+    {
+        for (int i = 0; i < shopItems.Length; i++)
+        {
+            if (shopItems[i].category == cs.getCategory())
+            {
+                shopPanelsGO[i].SetActive(true);
+            } else
+            {
+                shopPanelsGO[i].SetActive(false);
+            }
+                
+        }
+        LoadPanels();
+        CheckPurchaseable();
     }
 
     public void CheckPurchaseable()
@@ -52,8 +74,8 @@ public class ShopManager : MonoBehaviour
             coinUI.text = "Coins: " + coins.ToString();
             //after unlocking item
             CheckPurchaseable(); //dont remove this
-            myBuyButtons[btnNo].interactable = false;
             Debug.Log(shopItems[btnNo] + "purchased");
+            buyButtonGO[btnNo].SetActive(false);
         }
     }
 }

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1c6bd6ef8eb0d94a84fbdfb4c2120b0, type: 3}
-  m_Name: Pistol1
+  m_Name: Armor 3
   m_EditorClassIdentifier: 
-  title: Glock
-  stats: 200
-  cost: 30
+  title: Iron
+  stats: 30
+  cost: 15
+  category: Armor
