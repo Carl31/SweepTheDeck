@@ -12,7 +12,7 @@ public class Example_Motion_Attack_Controller : MonoBehaviour {
 	private string aux="";
 	//--
 	void Start () {
-		maxspeed=2f;//Set walk speed
+		maxspeed=4f;//Set walk speed
 		faceright=true;//Default right side
 		anim = this.gameObject.GetComponent<Animator> ();
 		anim.SetBool ("walk", false);//Walking animation is deactivated
