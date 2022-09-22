@@ -75,12 +75,12 @@ public class PlayerMovement : MonoBehaviour
         
         if (moveLeft)
         {
-            rb.velocity = new Vector2(-moveSpeed, 0f);
+            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         }
 
         if (moveRight)
         {
-            rb.velocity = new Vector2(moveSpeed, 0f);
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
          
     }
