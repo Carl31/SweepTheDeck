@@ -6,34 +6,55 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    private float moveSpeed, jumpForce;
+    public float moveSpeed, jumpForce;
 
     private bool moveLeft, moveRight;
+
+    public Animator animator;
+
+    private bool Attack;
+
+    private bool grounded;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveSpeed = 5f;
-        jumpForce = 500f;
+        moveSpeed = 8f;
+        jumpForce = 15f;
         moveLeft = false;
-        moveRight = false;  
+        moveRight = false;
+        animator = GetComponent<Animator>();
     }
 
     public void MoveLeft()
     {
         moveLeft = true;
+        animator.SetFloat("Speed", 1);
+        gameObject.transform.localScale = new Vector3(-2, 2, 2);
     }
 
     public void MoveRight()
     {
         moveRight = true;
+        animator.SetFloat("Speed", 1);
+        gameObject.transform.localScale = new Vector3(2, 2, 2);
     }
 
     public void Jump()
     {
+        animator.SetBool("IsJumping", true);
         if (rb.velocity.y == 0)
         {
-            rb.AddForce(Vector2.up * jumpForce);
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            animator.SetBool("IsJumping", false);
         }
     }
 
@@ -42,11 +63,13 @@ public class PlayerMovement : MonoBehaviour
         moveLeft = false;
         moveRight = false;
         rb.velocity = Vector2.zero;
+        animator.SetFloat("Speed", -1);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (moveLeft)
         {
             rb.velocity = new Vector2(-moveSpeed, 0f);
@@ -56,5 +79,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(moveSpeed, 0f);
         }
+         
     }
 }
