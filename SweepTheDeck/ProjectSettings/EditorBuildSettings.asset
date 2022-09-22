@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Battle.unity
     guid: cf1fe45d030f64a4e94484393b08d2c6
   - enabled: 1
-    path: Assets/Scenes/Inventory.unity
-    guid: ca5122261447abe46a4cb5aec321a2f4
-  - enabled: 1
     path: Assets/Scenes/Leaderboard.unity
     guid: e021eb4c8896a5440905a122099b4726
   - enabled: 1
