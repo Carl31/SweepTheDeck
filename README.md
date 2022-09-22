@@ -1,2 +1,0 @@
-# SweepTheDeck
-COMP602
