@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
-    private bool Attack;
-
     private bool grounded;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
         moveLeft = true;
         animator.SetFloat("Speed", 1);
         gameObject.transform.localScale = new Vector3(-2, 2, 2);
+    }
+
+    public void Attack()
+    {
+        animator.SetTrigger("Attack");
     }
 
     public void MoveRight()
