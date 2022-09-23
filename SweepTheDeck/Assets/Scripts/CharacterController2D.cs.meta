@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:SweepTheDeck/Assets/Scripts/Enemy_Behaviour.cs.meta
+guid: 64e69a5d47df46442a122dc3c9a5a4f7
+========
+guid: 911be9e889f8bab4cbc8b72fa7a556e6
+>>>>>>>> origin/screenDevelopment:SweepTheDeck/Assets/Scripts/CharacterController2D.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
