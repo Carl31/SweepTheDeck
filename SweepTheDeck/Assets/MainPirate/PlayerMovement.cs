@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveLeft = true;
         animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(-2, 2, 2);
+        gameObject.transform.localScale = new Vector3(-180, 180, 180);
     }
 
     public void Attack()
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveRight = true;
         animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(2, 2, 2);
+        gameObject.transform.localScale = new Vector3(180, 180, 180);
     }
 
     public void Jump()
