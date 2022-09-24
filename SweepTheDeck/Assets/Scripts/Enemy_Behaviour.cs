@@ -28,7 +28,7 @@ public class Enemy_Behaviour : MonoBehaviour
 		anim.SetBool("dead", false);//Dying animation is deactivated
 		anim.SetBool("jump", false);//Jumping animation is deactivated
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-		Physics2D.IgnoreLayerCollision(3, 7);
+		Physics2D.IgnoreLayerCollision(6, 0);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -111,7 +111,7 @@ public class Enemy_Behaviour : MonoBehaviour
 			if (Vector2.Distance(transform.position, target.position) > attackRange)
 			{
 				anim.SetBool("walk", true);
-				Vector2 tempVec = Vector2.MoveTowards(transform.position, target.position, maxspeed * Time.deltaTime);
+				Vector2 tempVec = Vector2.MoveTowards(transform.position.x, target.position.x, maxspeed * Time.deltaTime);
 				transform.position = tempVec;
 				if ((tempVec.x - previousX) > 0 && !faceright) Flip();
 				if ((tempVec.x - previousX) < 0 && faceright) Flip();
@@ -127,7 +127,8 @@ public class Enemy_Behaviour : MonoBehaviour
 		else
         {
 			die();
-        }
+			
+		}
     }
 
 	void Flip()
@@ -159,6 +160,7 @@ public class Enemy_Behaviour : MonoBehaviour
 		{
 			Debug.Log("Enemy died!");
 			isDead = true;
+			this.enabled = false;
 		}
 	}
 
@@ -169,6 +171,7 @@ public class Enemy_Behaviour : MonoBehaviour
         {
 			anim.SetBool("dead", true);
 			isDead = true;
+			this.enabled = false;
 		}
 	}
 

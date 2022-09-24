@@ -12,6 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+
+    public int attackDamage = 40;
+
     private bool grounded;
     // Start is called before the first frame update
     void Start()
@@ -34,6 +40,21 @@ public class PlayerMovement : MonoBehaviour
     public void Attack()
     {
         animator.SetTrigger("Attack");
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     public void MoveRight()
