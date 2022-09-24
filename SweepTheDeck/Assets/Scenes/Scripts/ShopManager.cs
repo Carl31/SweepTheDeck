@@ -17,13 +17,13 @@ public class ShopManager : MonoBehaviour
    
     void Start()
     {
-        //coins = PlayerPrefs.GetInt("COINS");
+        //Debug.Log(cs.getCategory());
         for(int i = 0; i < shopItems.Length; i++)
         {
-            if(shopItems[i].category == cs.getCategory())
+            //if(shopItems[i].category == cs.getCategory())
                 shopPanelsGO[i].SetActive(true);
         }
-        coinUI.text = "Coins: " + coins.ToString();
+        coinUI.text = coins.ToString();
         LoadPanels();
         CheckPurchaseable();
     }
@@ -34,7 +34,7 @@ public class ShopManager : MonoBehaviour
         {
             shopPanels[i].titleText.text = shopItems[i].title;
             shopPanels[i].statsText.text = "Stats: " + shopItems[i].stats.ToString();
-            shopPanels[i].costText.text = "Price: " + shopItems[i].cost.ToString();
+            shopPanels[i].costText.text = shopItems[i].cost.ToString();
         }
     }
 
@@ -71,7 +71,7 @@ public class ShopManager : MonoBehaviour
         if (coins >= shopItems[btnNo].cost)
         {
             coins = coins - shopItems[btnNo].cost;
-            coinUI.text = "Coins: " + coins.ToString();
+            coinUI.text = coins.ToString();
             //after unlocking item
             CheckPurchaseable(); //dont remove this
             Debug.Log(shopItems[btnNo] + "purchased");
