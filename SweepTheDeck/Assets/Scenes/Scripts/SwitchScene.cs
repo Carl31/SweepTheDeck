@@ -5,39 +5,39 @@ using UnityEngine.SceneManagement;
 
 public class SwitchScene : MonoBehaviour
 {
-    public void HandleLoadPrevButtonClick()
+    public void Back()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("StartingScreen");
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(0);
-        Debug.Log(0);
+        SceneManager.LoadScene("StartingScreen");
+        Debug.Log("StartingScreen");
     }
 
     public void LoadInGame()
     {
-        SceneManager.LoadScene(1);
-        Debug.Log("1");
+        SceneManager.LoadScene("Battle");
+        Debug.Log("Battle");
     }
 
     public void LoadLeaderboard()
     {
-        SceneManager.LoadScene(2);
-        Debug.Log(3);
+        Debug.Log("LoadLeaderboard Clicked");
+        //SceneManager.LoadScene(2);
     }
 
     public void LoadSettings()
     {
-        SceneManager.LoadScene(3);
-        Debug.Log(4);
+        SceneManager.LoadScene("Settings");
+        Debug.Log("Settings");
     }
 
     public void LoadShanty()
     {
-        SceneManager.LoadScene(4);
-        Debug.Log(5);
+        SceneManager.LoadScene("Shanty");
+        Debug.Log("Shanty");
     }
 
     public void QuitGame()

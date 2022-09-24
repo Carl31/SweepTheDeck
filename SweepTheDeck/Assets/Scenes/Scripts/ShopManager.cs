@@ -17,11 +17,13 @@ public class ShopManager : MonoBehaviour
    
     void Start()
     {
-        //Debug.Log(cs.getCategory());
+        string defaultCategory = "Sword";
         for(int i = 0; i < shopItems.Length; i++)
         {
-            //if(shopItems[i].category == cs.getCategory())
+            if(shopItems[i].category == defaultCategory)
+            {
                 shopPanelsGO[i].SetActive(true);
+            }
         }
         coinUI.text = coins.ToString();
         LoadPanels();
@@ -68,6 +70,7 @@ public class ShopManager : MonoBehaviour
 
     public void PurchaseItem(int btnNo)
     {
+        //Debug.Log(shopItems[btnNo].name);
         if (coins >= shopItems[btnNo].cost)
         {
             coins = coins - shopItems[btnNo].cost;
