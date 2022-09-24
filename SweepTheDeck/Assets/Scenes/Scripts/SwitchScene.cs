@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SwitchScene : MonoBehaviour
 {
-    public void Back()
+    public void BackButton()
     {
         SceneManager.LoadScene("StartingScreen");
     }
@@ -25,12 +25,11 @@ public class SwitchScene : MonoBehaviour
     public void LoadLeaderboard()
     {
         Debug.Log("LoadLeaderboard Clicked");
-        //SceneManager.LoadScene(2);
     }
 
     public void LoadSettings()
     {
-        SceneManager.LoadScene("Settings");
+        SceneManager.LoadScene(4);
         Debug.Log("Settings");
     }
 
