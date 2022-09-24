@@ -12,14 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Battle.unity
     guid: cf1fe45d030f64a4e94484393b08d2c6
   - enabled: 1
-    path: Assets/Scenes/Leaderboard.unity
-    guid: e021eb4c8896a5440905a122099b4726
+    path: Assets/Scenes/Shanty.unity
+    guid: aae6983af49177040af143e44c92b78a
   - enabled: 1
     path: Assets/Scenes/Settings.unity
-    guid: 14393f88b8e5bc24587192b72ecc8676
-  - enabled: 1
-    path: Assets/Scenes/Shanty.unity
-    guid: 96ac645bd9af0bd468716a12e0953f10
+    guid: 0fa86b24d245e4140b395ef934cceefc
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 73d0ec504094e1f43b0d73ff88083b07, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 58500240449369c45a26e5ee513ecd42, type: 2}

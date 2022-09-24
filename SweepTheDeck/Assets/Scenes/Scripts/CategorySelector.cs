@@ -7,16 +7,17 @@ using System.Linq;
 public class CategorySelector : MonoBehaviour
 {
     ToggleGroup toggleGroup;
-    
+    string categoryName;
     void Start()
     {
         toggleGroup = GetComponent<ToggleGroup>();
+        categoryName = toggleGroup.ActiveToggles().FirstOrDefault().name;
     }
 
     public string getCategory()
     {
-        Toggle toggle = toggleGroup.ActiveToggles().FirstOrDefault();
+        categoryName = toggleGroup.ActiveToggles().FirstOrDefault().name;
         //Debug.Log(toggle.name);
-        return toggle.name;
+        return categoryName;
     }
 }
