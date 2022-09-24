@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
             animator.SetBool("IsJumping", false);
         }
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (moveLeft)
         {
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
@@ -82,6 +82,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
-         
+
     }
 }

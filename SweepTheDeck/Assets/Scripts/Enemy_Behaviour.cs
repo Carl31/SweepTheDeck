@@ -75,12 +75,10 @@ public class Enemy_Behaviour : MonoBehaviour
                 }
             }
             //--END JUMPING
-
             //--WALKING
             float move = Input.GetAxis("Horizontal");
             GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxspeed, GetComponent<Rigidbody2D>().velocity.y);
             //--
-
             if (move > 0)
             {//Go right
                 anim.SetBool("walk", true);//Walking animation is activated
@@ -104,9 +102,9 @@ public class Enemy_Behaviour : MonoBehaviour
             //END WALKING*/
 
 			//GetComponent<Rigidbody2D>().velocity = movement * maxspeed;
-			
-			
-			
+
+
+
 			// MOVEMENT
 			if (Vector2.Distance(transform.position, target.position) > attackRange)
 			{
@@ -115,7 +113,7 @@ public class Enemy_Behaviour : MonoBehaviour
 				transform.position = tempVec;
 				if ((tempVec.x - previousX) > 0 && !faceright) Flip();
 				if ((tempVec.x - previousX) < 0 && faceright) Flip();
-				Debug.Log("Current: "+tempVec.x);
+				Debug.Log("Current: " + tempVec.x);
 				previousX = tempVec.x;
 			}
 			else
@@ -125,10 +123,10 @@ public class Enemy_Behaviour : MonoBehaviour
 			}
 		}
 		else
-        {
+		{
 			die();
-        }
-    }
+		}
+	}
 
 	void Flip()
 	{
@@ -139,15 +137,15 @@ public class Enemy_Behaviour : MonoBehaviour
 	}
 
 	void attack()
-    {
-		
+	{
+
 		if (cooldownTimer >= attackCooldown)
-        {
+		{
 			cooldownTimer = 0f;
 			anim.SetBool("attack", true);
 			anim.Play("attacking", -1, 0f);
 		}
-		
+
 	}
 
 	// When enemy takes damage
@@ -164,13 +162,13 @@ public class Enemy_Behaviour : MonoBehaviour
 
 	// Die
 	void die()
-    {
+	{
 		if (!isDead)
-        {
-			anim.SetBool("dead", true);
+		{
+			anim.SetBool("IsDead", true);
 			isDead = true;
 		}
+		this.enabled = false;
 	}
 
 }
-
