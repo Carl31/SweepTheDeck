@@ -10,7 +10,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool moveLeft, moveRight;
 
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
     public Animator animator;
+    public int attackDamage = 40;
 
     private bool grounded;
     // Start is called before the first frame update
@@ -28,19 +32,33 @@ public class PlayerMovement : MonoBehaviour
     {
         moveLeft = true;
         animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(-2, 2, 2);
+        gameObject.transform.localScale = new Vector3(-180, 180, 180);
     }
 
     public void Attack()
     {
         animator.SetTrigger("Attack");
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Enemy_Behaviour>().takeDamage(attackDamage);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     public void MoveRight()
     {
         moveRight = true;
         animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(2, 2, 2);
+        gameObject.transform.localScale = new Vector3(180, 180, 180);
     }
 
     public void Jump()
