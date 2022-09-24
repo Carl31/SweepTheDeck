@@ -28,7 +28,7 @@ public class Enemy_Behaviour : MonoBehaviour
 		anim.SetBool("dead", false);//Dying animation is deactivated
 		anim.SetBool("jump", false);//Jumping animation is deactivated
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-		Physics2D.IgnoreLayerCollision(3, 7);
+		Physics2D.IgnoreLayerCollision(0, 3);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -75,12 +75,10 @@ public class Enemy_Behaviour : MonoBehaviour
                 }
             }
             //--END JUMPING
-
             //--WALKING
             float move = Input.GetAxis("Horizontal");
             GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxspeed, GetComponent<Rigidbody2D>().velocity.y);
             //--
-
             if (move > 0)
             {//Go right
                 anim.SetBool("walk", true);//Walking animation is activated
@@ -104,31 +102,32 @@ public class Enemy_Behaviour : MonoBehaviour
             //END WALKING*/
 
 			//GetComponent<Rigidbody2D>().velocity = movement * maxspeed;
-			
-			
-			
+
+
+
 			// MOVEMENT
 			if (Vector2.Distance(transform.position, target.position) > attackRange)
 			{
-				anim.SetBool("walk", true);
+				anim.SetFloat("Speed", maxspeed);
 				Vector2 tempVec = Vector2.MoveTowards(transform.position, target.position, maxspeed * Time.deltaTime);
 				transform.position = tempVec;
 				if ((tempVec.x - previousX) > 0 && !faceright) Flip();
 				if ((tempVec.x - previousX) < 0 && faceright) Flip();
-				Debug.Log("Current: "+tempVec.x);
+				Debug.Log("Current: " + tempVec.x);
 				previousX = tempVec.x;
 			}
 			else
 			{
-				anim.SetBool("walk", false);
+				anim.SetFloat("Speed", maxspeed);
 				attack();
 			}
 		}
 		else
-        {
+		{
 			die();
-        }
-    }
+			anim.SetBool("IsDead", true);
+		}
+	}
 
 	void Flip()
 	{
@@ -139,15 +138,15 @@ public class Enemy_Behaviour : MonoBehaviour
 	}
 
 	void attack()
-    {
-		
+	{
+
 		if (cooldownTimer >= attackCooldown)
-        {
+		{
 			cooldownTimer = 0f;
 			anim.SetBool("attack", true);
 			anim.Play("attacking", -1, 0f);
 		}
-		
+
 	}
 
 	// When enemy takes damage
@@ -164,13 +163,13 @@ public class Enemy_Behaviour : MonoBehaviour
 
 	// Die
 	void die()
-    {
+	{
 		if (!isDead)
-        {
-			anim.SetBool("dead", true);
+		{
+			anim.SetBool("IsDead", true);
 			isDead = true;
 		}
+		this.enabled = false;
 	}
 
 }
-

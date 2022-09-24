@@ -3942,8 +3942,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 20
-    m_Bottom: 20
+    m_Top: 10
+    m_Bottom: 10
   m_ChildAlignment: 4
   m_Spacing: 15
   m_ChildForceExpandWidth: 1
@@ -4313,7 +4313,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1074577417}
           m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
-          m_MethodName: Back
+          m_MethodName: BackButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

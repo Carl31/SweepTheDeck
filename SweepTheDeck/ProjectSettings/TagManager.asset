@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Type
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
+  - PauseUI
   - 
   - 
   - 
