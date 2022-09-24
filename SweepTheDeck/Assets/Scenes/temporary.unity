@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 47972517}
   - component: {fileID: 47972516}
   - component: {fileID: 47972519}
-  - component: {fileID: 47972520}
   - component: {fileID: 47972521}
+  - component: {fileID: 47972520}
   - component: {fileID: 47972522}
   m_Layer: 6
   m_Name: Enemy

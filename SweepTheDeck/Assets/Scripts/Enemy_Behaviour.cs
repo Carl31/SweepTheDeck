@@ -112,10 +112,11 @@ public class Enemy_Behaviour : MonoBehaviour
 			{
 				anim.SetFloat("Speed", maxspeed);
 				Vector2 tempVec = Vector2.MoveTowards(transform.position, target.position, maxspeed * Time.deltaTime);
+				tempVec.y = transform.position.y;
 				transform.position = tempVec;
 				if ((tempVec.x - previousX) > 0 && !faceright) Flip();
 				if ((tempVec.x - previousX) < 0 && faceright) Flip();
-				Debug.Log("Current: "+tempVec.x);
+				// Debug.Log("Current: "+tempVec.x);
 				previousX = tempVec.x;
 			}
 			else
