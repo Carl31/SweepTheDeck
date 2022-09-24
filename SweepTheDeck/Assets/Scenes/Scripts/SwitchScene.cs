@@ -5,20 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SwitchScene : MonoBehaviour
 {
-    public int sceneNumber;
-    private static int previousScene;
-    private int oldPreviousScene;
-
-    void Start()
-    {
-        sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        oldPreviousScene = previousScene;
-        previousScene = sceneNumber;
-    }
-
     public void HandleLoadPrevButtonClick()
     {
-        SceneManager.LoadScene(oldPreviousScene);
+        SceneManager.LoadScene(0);
     }
 
     public void LoadMainMenu()
