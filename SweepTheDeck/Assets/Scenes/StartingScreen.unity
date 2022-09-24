@@ -636,7 +636,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1432083136}
-          m_TargetAssemblyTypeName: LoadScreens, Assembly-CSharp
+          m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
           m_MethodName: LoadSettings
           m_Mode: 1
           m_Arguments:

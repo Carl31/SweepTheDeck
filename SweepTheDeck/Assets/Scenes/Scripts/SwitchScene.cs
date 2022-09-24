@@ -29,7 +29,7 @@ public class SwitchScene : MonoBehaviour
 
     public void LoadSettings()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Settings");
         Debug.Log("Settings");
     }
 
