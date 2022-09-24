@@ -32,9 +32,4 @@ public class EnemyHealth : MonoBehaviour
         this.enabled = false;
     }
 
-    void Update()
-    {
-      
-        
-    }
 }

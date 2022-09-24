@@ -25,7 +25,7 @@ public class Enemy_Behaviour : MonoBehaviour
 		faceright = true;//Default right side
 		anim = this.gameObject.GetComponent<Animator>();
 		//anim.SetBool("walk", false);//Walking animation is deactivated
-		anim.SetBool("dead", false);//Dying animation is deactivated
+		anim.SetBool("IsDead", false);//Dying animation is deactivated
 		anim.SetBool("jump", false);//Jumping animation is deactivated
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 		Physics2D.IgnoreLayerCollision(6, 0);
@@ -110,8 +110,8 @@ public class Enemy_Behaviour : MonoBehaviour
 			// MOVEMENT
 			if (Vector2.Distance(transform.position, target.position) > attackRange)
 			{
-				anim.SetBool("walk", true);
-				Vector2 tempVec = Vector2.MoveTowards(transform.position.x, target.position.x, maxspeed * Time.deltaTime);
+				anim.SetFloat("Speed", maxspeed);
+				Vector2 tempVec = Vector2.MoveTowards(transform.position, target.position, maxspeed * Time.deltaTime);
 				transform.position = tempVec;
 				if ((tempVec.x - previousX) > 0 && !faceright) Flip();
 				if ((tempVec.x - previousX) < 0 && faceright) Flip();
@@ -120,14 +120,15 @@ public class Enemy_Behaviour : MonoBehaviour
 			}
 			else
 			{
-				anim.SetBool("walk", false);
+				anim.SetFloat("Speed", maxspeed);
 				attack();
 			}
 		}
 		else
         {
-			die();
-			
+			anim.SetBool("IsDead", true);
+			maxspeed = 0;
+			this.enabled = false;
 		}
     }
 
@@ -160,19 +161,20 @@ public class Enemy_Behaviour : MonoBehaviour
 		{
 			Debug.Log("Enemy died!");
 			isDead = true;
-			this.enabled = false;
 		}
 	}
-
+	
 	// Die
 	void die()
     {
 		if (!isDead)
         {
-			anim.SetBool("dead", true);
+			anim.SetBool("IsDead", true);
 			isDead = true;
-			this.enabled = false;
+			maxspeed = 0;
 		}
+		this.enabled = false;
+		Destroy(this);
 	}
 
 }

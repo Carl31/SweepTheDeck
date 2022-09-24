@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            enemy.GetComponent<Enemy_Behaviour>().takeDamage(attackDamage);
         }
     }
 
