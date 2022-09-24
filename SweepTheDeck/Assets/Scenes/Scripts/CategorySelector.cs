@@ -16,6 +16,7 @@ public class CategorySelector : MonoBehaviour
     public string getCategory()
     {
         Toggle toggle = toggleGroup.ActiveToggles().FirstOrDefault();
+        //Debug.Log(toggle.name);
         return toggle.name;
     }
 }
