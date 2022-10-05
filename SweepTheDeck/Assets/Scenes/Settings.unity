@@ -747,6 +747,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: ce2aea616960722419cdd10202d2d496, type: 2}
   musicSlider: {fileID: 1812259327}
   soundSlider: {fileID: 1815005833}
+  musicToggle: {fileID: 727999956}
+  soundToggle: {fileID: 1191079377}
 --- !u!1 &555310803
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +896,7 @@ GameObject:
   - component: {fileID: 727999956}
   - component: {fileID: 727999957}
   m_Layer: 0
-  m_Name: Mute
+  m_Name: MusicMute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,7 +971,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &727999957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,23 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SetMusicVolume, Assembly-CSharp
-          m_MethodName: ToggleMute
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  m_Delegates: []
 --- !u!82 &755151756 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6182376787898854168, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
@@ -1398,7 +1384,7 @@ GameObject:
   - component: {fileID: 1191079377}
   - component: {fileID: 1191079378}
   m_Layer: 0
-  m_Name: Mute
+  m_Name: SoundMute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1473,7 +1459,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &1191079378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,23 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SetSoundVolume, Assembly-CSharp
-          m_MethodName: ToggleMute
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  m_Delegates: []
 --- !u!1 &1243455668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,6 +2537,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6182376787898854168, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182376787898854168, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182376787898854168, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8794881435882787594, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
       propertyPath: m_Name
       value: AudioManager

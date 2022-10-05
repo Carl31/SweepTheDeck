@@ -39,8 +39,23 @@ public class AudioManager : MonoBehaviour
     {
         float music = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
         float sound = PlayerPrefs.GetFloat(SOUND_KEY, 1f);
-        
-        mixer.SetFloat(VolumeSettings.MIXER_MUSIC, Mathf.Log10(music) * 20);
-        mixer.SetFloat(VolumeSettings.MIXER_SOUND, Mathf.Log10(sound) * 20);
+        int musicMute = PlayerPrefs.GetInt(VolumeSettings.MUSIC_MUTE, 0);
+        int soundMute = PlayerPrefs.GetInt(VolumeSettings.SOUND_MUTE, 0);
+        if(musicMute == 1)
+        {
+            mixer.SetFloat(VolumeSettings.MIXER_MUSIC, Mathf.Log10(0.0001f) * 20);
+        } else if(musicMute == 0)
+        {
+            mixer.SetFloat(VolumeSettings.MIXER_MUSIC, Mathf.Log10(music) * 20);
+        }
+
+        if (soundMute == 1)
+        {
+            mixer.SetFloat(VolumeSettings.MIXER_SOUND, Mathf.Log10(0.0001f) * 20);
+        }
+        else if (soundMute == 0)
+        {
+            mixer.SetFloat(VolumeSettings.MIXER_SOUND, Mathf.Log10(sound) * 20);
+        }
     }
 }
