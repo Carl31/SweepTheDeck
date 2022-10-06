@@ -2609,12 +2609,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8794881435882787701, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e71e4e4903e7241458607f9e04030eef, type: 3}
     - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
       propertyPath: eatSource
       value: 
       objectReference: {fileID: 755151756}
     - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: musicSource
+      value: 
+      objectReference: {fileID: 8794881437401179958}
+    - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
       propertyPath: eatClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: musicClips.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
@@ -2629,5 +2641,22 @@ PrefabInstance:
       propertyPath: eatClips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 6e3aa03a1189d424c81cb992248792e4, type: 3}
+    - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: musicClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e71e4e4903e7241458607f9e04030eef, type: 3}
+    - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: musicClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: efdb5332bde59604a9b7191cf4ab3e46, type: 3}
+    - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: musicClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e72d9a157bc20c542ad1b5cfa60f4233, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+--- !u!82 &8794881437401179958 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8794881435882787701, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+  m_PrefabInstance: {fileID: 8794881437401179957}
+  m_PrefabAsset: {fileID: 0}

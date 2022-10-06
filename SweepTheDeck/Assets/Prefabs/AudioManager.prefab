@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3979570944516631108}
   - component: {fileID: 6182376787898854168}
   m_Layer: 0
-  m_Name: EatSource
+  m_Name: PlayerSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +172,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7379922777411006584, guid: ce2aea616960722419cdd10202d2d496, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f489230b7949a134ab41eded650e1c95, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e71e4e4903e7241458607f9e04030eef, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -271,6 +271,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: ce2aea616960722419cdd10202d2d496, type: 2}
-  eatSource: {fileID: 0}
-  eatClips:
-  - {fileID: 0}
+  audioSource: {fileID: 8794881435882787701}
+  bgmClips:
+  - {fileID: 8300000, guid: e71e4e4903e7241458607f9e04030eef, type: 3}
+  - {fileID: 8300000, guid: efdb5332bde59604a9b7191cf4ab3e46, type: 3}
+  - {fileID: 8300000, guid: e72d9a157bc20c542ad1b5cfa60f4233, type: 3}
+  playerAudioSource: {fileID: 0}
+  playerAudioClips: []
