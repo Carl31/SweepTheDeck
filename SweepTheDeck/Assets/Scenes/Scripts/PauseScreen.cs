@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseScreen : MonoBehaviour
+public class PauseScreen : SwitchScene
 {
     public static bool gameIsPaused = false;
     public GameObject pauseScreenUI;
@@ -28,19 +28,28 @@ public class PauseScreen : MonoBehaviour
         AudioListener.pause = true;
         gameIsPaused = true;
     }
-
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    public void LoadSettings()
-    {
-        SceneManager.LoadScene(3);
-    }
     public void Restart()
     {
         //not my problem lmfao
     }
-    
+
+    public void SettingsFromPause()
+    {
+        if(PlayerPrefs.HasKey(PREV_PREV_SCENE))
+        {
+            PlayerPrefs.SetInt(PREV_PREV_SCENE, SceneManager.GetActiveScene().buildIndex);
+        }
+        AudioListener.pause = false;
+        LoadSettings();
+    }
+
+    public void MainMenuFromPause()
+    {
+        if (PlayerPrefs.HasKey(PREV_PREV_SCENE))
+        {
+            PlayerPrefs.SetInt(PREV_PREV_SCENE, SceneManager.GetActiveScene().buildIndex);
+        }
+        AudioListener.pause = false;
+        LoadMainMenu();
+    }
 }
