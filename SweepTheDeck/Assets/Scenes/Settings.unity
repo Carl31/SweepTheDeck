@@ -985,11 +985,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
---- !u!82 &755151756 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6182376787898854168, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
-  m_PrefabInstance: {fileID: 8794881437401179957}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &759123762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,7 +1662,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 493034063}
           m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
-          m_MethodName: LoadMainMenu
+          m_MethodName: BackButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2616,7 +2611,7 @@ PrefabInstance:
     - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
       propertyPath: eatSource
       value: 
-      objectReference: {fileID: 755151756}
+      objectReference: {fileID: 0}
     - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
       propertyPath: musicSource
       value: 
