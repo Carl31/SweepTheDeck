@@ -10,13 +10,20 @@ public class PlayerMovement : MonoBehaviour
 
     private bool moveLeft, moveRight;
 
+<<<<<<< Updated upstream
     public Animator animator;
+=======
+    public Transform firePoint;
+    
+>>>>>>> Stashed changes
 
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
     public int attackDamage = 40;
+
+    public GameObject bulletPrefab;
 
     private bool grounded;
     // Start is called before the first frame update
@@ -49,7 +56,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     void OnDrawGizmosSelected()
+=======
+    public void Shoot()
+    {
+        //shooting stuff ;D
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    private void OnDrawGizmosSelected()
+>>>>>>> Stashed changes
     {
         if (attackPoint == null)
             return;

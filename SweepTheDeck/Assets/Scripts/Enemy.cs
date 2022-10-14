@@ -6,8 +6,33 @@ public class Enemy : MonoBehaviour
 {
     public Animator animator;
 
+<<<<<<< Updated upstream
     public int maxHealth = 100;
     int currentHealth;
+=======
+    public int maxHealth { get; }
+    public int currentHealth; //{ get; }
+    string name { get; }
+    int damage { get; }
+    int gold { get; } // number of coins dropped upon death -- need to implement this
+
+    private Enemy(int maxHealth, int damage, string name, int gold)
+    {
+        maxHealth = maxHealth;
+        damage = damage;
+        name = name;
+        currentHealth = maxHealth;
+	    gold = gold;
+    }
+
+    //public static Enemy CreateEnemy(string type, int difficulty) // difficulty determines health and damage, type determines the type of sprite -- need to implement this
+    //{
+    //    if (difficulty <= 10 && difficulty >= 1) // need to also check for type -- only "skeletons" and "zombies"?
+	   // {
+    //        return new Enemy(difficulty * 10, difficulty * 10, type, difficulty * 5);
+	   // }
+    //}
+>>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
