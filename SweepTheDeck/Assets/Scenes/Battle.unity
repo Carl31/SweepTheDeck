@@ -298,7 +298,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  maxHealth: 100
 --- !u!114 &47972523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,7 +930,7 @@ MonoBehaviour:
   - name: Wave 1
     enemy: {fileID: 47972518}
     enemyAmount: 2
-    spawnRate: 3
+    spawnRate: 2
   - name: Wave 2
     enemy: {fileID: 47972518}
     enemyAmount: 3
@@ -2026,23 +2025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136c6fc727a1c0242926edc1cf91dece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoints:
-  - {fileID: 1088244719}
-  - {fileID: 486841610}
-  waves:
-  - name: Wave 1
-    enemy: {fileID: 47972518}
-    enemyAmount: 2
-    spawnRate: 2
-  - name: Wave 2
-    enemy: {fileID: 47972518}
-    enemyAmount: 4
-    spawnRate: 2
-  nextWave: 0
-  waveInterval: 5
-  waveCountdown: 0
-  state: 2
-  enemySearchCountdown: 1
 --- !u!114 &1218861020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,16 +2037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0966ea81118ccbe41bc7b6741cf3ae40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - name: 
-    enemy: {fileID: 0}
-    enemyAmount: 0
-    spawnRate: 0
-  nextWave: 0
-  waveInterval: 5
-  waveCountdown: 0
-  state: 2
-  enemySearchCountdown: 1
 --- !u!1 &1218908459
 GameObject:
   m_ObjectHideFlags: 0

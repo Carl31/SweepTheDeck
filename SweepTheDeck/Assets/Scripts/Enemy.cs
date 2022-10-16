@@ -6,19 +6,19 @@ public class Enemy : MonoBehaviour
 {
     public Animator animator;
 
-    public int maxHealth { get; };
-    int currentHealth { get; };
-    string name { get; };
-    int damage { get; };
-    int gold { get: }; // number of coins dropped upon death -- need to implement this
+    public int maxHealth { get; }
+    int currentHealth { get; set; }
+    string name { get; }
+    int damage { get; }
+    int gold { get; } // number of coins dropped upon death -- need to implement this
 
     private Enemy(int maxHealth, int damage, string name, int gold)
     {
-        maxHealth = maxHealth;
-        damage = damage;
-        name = name;
-        currentHealth = maxHealth;
-	    gold = gold;
+        this.maxHealth = maxHealth;
+        this.damage = damage;
+        this.name = name;
+        this.currentHealth = maxHealth;
+        this.gold = gold;
     }
 
     public static Enemy CreateEnemy(string type, int difficulty) // difficulty determines health and damage, type determines the type of sprite -- need to implement this
@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
 	    {
             return new Enemy(difficulty * 10, difficulty * 10, type, difficulty * 5);
 	    }
+        return null;
     }
 
     // Start is called before the first frame update

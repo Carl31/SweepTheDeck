@@ -94,8 +94,11 @@ public class WaveSpawner : MonoBehaviour
         // spawn enemy here
         Debug.Log("Spawning enemy: " + enemy.name);
 
-        
-        Transform currentSpawnPoint = enemySpawnPoints[Random.Range(0, enemySpawnPoints.Length)];
+        int spawnSide = Random.Range(0, enemySpawnPoints.Length);
+        enemy.transform.localScale = new Vector3(-2.6f, 2.6f, 0.0f);
+
+        Transform currentSpawnPoint = enemySpawnPoints[spawnSide]; // spawsn enemy on either left or right of screen (randomly)
+        currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f);
         Instantiate(enemy, currentSpawnPoint.position, currentSpawnPoint.rotation);
     }
 
