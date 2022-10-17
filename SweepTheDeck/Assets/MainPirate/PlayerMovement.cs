@@ -22,7 +22,10 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask enemyLayers;
 
     public int attackDamage = 40;
-    public float playerHealth = 100f;
+
+    public HealthbarBehaviour Healthbar;
+    public float currentHealth;
+    public float MaxHealth = 100f;
 
     public GameObject bulletPrefab;
 
@@ -30,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = MaxHealth;
+        Healthbar.SetHealth(currentHealth, MaxHealth);
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = 8f;
         jumpForce = 15f;
@@ -79,9 +84,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void takeDamage(float damage)
     {
-        playerHealth -= damage;
+        currentHealth -= damage;
+        Healthbar.SetHealth(currentHealth, MaxHealth);
 
-        if (playerHealth <= 0)
+        if (currentHealth <= 0)
         {
             die();
         }
