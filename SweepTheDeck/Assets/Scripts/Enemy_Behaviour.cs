@@ -15,7 +15,7 @@ public class Enemy_Behaviour : MonoBehaviour
 	private int attackCooldown = 2;
 	private float cooldownTimer = 0f;
 	private float previousX = 0;
-	private float currentHealth = 10;
+	private float currentHealth = 100;
 
 
 	//--

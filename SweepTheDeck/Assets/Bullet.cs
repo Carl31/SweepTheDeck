@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public float speed = 20f;
     public Rigidbody2D rb;
     public GameObject impactEffect;
-
+    public float attackDamage = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +17,10 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Enemy enemy = hitInfo.GetComponent<Enemy>();
+        Enemy_Behaviour enemy = hitInfo.GetComponent<Enemy_Behaviour>();
         if (enemy != null)
         {
-            enemy.TakeDamage(20);
+            enemy.takeDamage(attackDamage);
         }
         //Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);

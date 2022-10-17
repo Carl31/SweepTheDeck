@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6266998514510566393}
   - component: {fileID: 6146829849963852637}
   - component: {fileID: -1729289149517716231}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,3 +139,4 @@ MonoBehaviour:
   speed: 15
   rb: {fileID: 6266998514510566393}
   impactEffect: {fileID: 2061698036620516157}
+  attackDamage: 24.45
