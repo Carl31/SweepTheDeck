@@ -127,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsDead", true);
             isDead = true;
+            this.enabled = false;
         }
         //Destroy(gameObject);
     }

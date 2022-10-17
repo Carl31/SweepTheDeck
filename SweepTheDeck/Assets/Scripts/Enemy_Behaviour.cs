@@ -10,20 +10,29 @@ public class Enemy_Behaviour : MonoBehaviour
 	private bool isDead = false;
 	private bool isAttacking = false;
 	private string aux = "";
+
 	private float attackRange = 1.3f;
 	private Transform target;
 	private int attackCooldown = 2;
+
 	private float cooldownTimer = 0f;
 	private float previousX = 0;
-	private float currentHealth = 100;
+
+	public float currentHealth;
+	public float MaxHealth = 100;
+
 	private float attackDamage = 40f;
 	public Transform attackPoint;
+
+	public HealthbarBehaviour Healthbar;
 
 	public LayerMask playerLayers;
 
 	//--
 	void Start()
 	{
+		currentHealth = MaxHealth;
+		Healthbar.SetHealth(currentHealth, MaxHealth);
 		maxspeed = 2f;//Set walk speed
 		faceright = true;//Default right side
 		anim = this.gameObject.GetComponent<Animator>();
@@ -165,7 +174,7 @@ public class Enemy_Behaviour : MonoBehaviour
 	public void takeDamage(float damage)
 	{
 		currentHealth -= damage;
-
+		Healthbar.SetHealth(currentHealth, MaxHealth);
 		if (currentHealth <= 0 && isDead == false)
 		{
 			Debug.Log("Enemy died!");
