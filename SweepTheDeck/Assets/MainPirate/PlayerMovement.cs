@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed, jumpForce;
 
     private bool moveLeft, moveRight;
+    private bool isDead = false;
 
     public Animator animator;
 
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask enemyLayers;
 
     public int attackDamage = 40;
+    public float playerHealth = 100f;
 
     public GameObject bulletPrefab;
 
@@ -75,6 +77,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void takeDamage(float damage)
+    {
+        playerHealth -= damage;
+
+        if (playerHealth <= 0)
+        {
+            die();
+        }
+    }
+
     public void Shoot()
     {
         animator.SetTrigger("Attack");
@@ -108,6 +120,15 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsJumping", false);
         }
+    }
+    void die()
+    {
+        if (!isDead)
+        {
+            animator.SetBool("IsDead", true);
+            isDead = true;
+        }
+        //Destroy(gameObject);
     }
 
     public void StopMoving()

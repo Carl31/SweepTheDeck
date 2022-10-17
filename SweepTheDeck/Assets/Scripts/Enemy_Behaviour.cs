@@ -16,7 +16,10 @@ public class Enemy_Behaviour : MonoBehaviour
 	private float cooldownTimer = 0f;
 	private float previousX = 0;
 	private float currentHealth = 100;
+	private float attackDamage = 40f;
+	public Transform attackPoint;
 
+	public LayerMask playerLayers;
 
 	//--
 	void Start()
@@ -28,7 +31,7 @@ public class Enemy_Behaviour : MonoBehaviour
 		anim.SetBool("IsDead", false);//Dying animation is deactivated
 		anim.SetBool("jump", false);//Jumping animation is deactivated
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-		Physics2D.IgnoreLayerCollision(6, 0);
+		Physics2D.IgnoreLayerCollision(6, 7);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -111,6 +114,7 @@ public class Enemy_Behaviour : MonoBehaviour
 			if (Vector2.Distance(transform.position, target.position) > attackRange)
 			{
 				anim.SetFloat("Speed", maxspeed);
+				anim.ResetTrigger("Attack");
 				Vector2 tempVec = Vector2.MoveTowards(transform.position, target.position, maxspeed * Time.deltaTime);
 				tempVec.y = transform.position.y;
 				transform.position = tempVec;
@@ -121,7 +125,7 @@ public class Enemy_Behaviour : MonoBehaviour
 			}
 			else
 			{
-				anim.SetFloat("Speed", maxspeed);
+				anim.SetFloat("Speed", 0);
 				attack();
 			}
 		}
@@ -143,12 +147,16 @@ public class Enemy_Behaviour : MonoBehaviour
 
 	void attack()
     {
-		
+		Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+
 		if (cooldownTimer >= attackCooldown)
         {
 			cooldownTimer = 0f;
-			anim.SetBool("attack", true);
-			anim.Play("attacking", -1, 0f);
+			anim.SetTrigger("Attack");
+			foreach (Collider2D player in hitPlayer)
+			{
+				player.GetComponent<PlayerMovement>().takeDamage(attackDamage);
+			}
 		}
 		
 	}
@@ -174,8 +182,7 @@ public class Enemy_Behaviour : MonoBehaviour
 			isDead = true;
 			maxspeed = 0;
 		}
-		this.enabled = false;
-		Destroy(this);
+		Destroy(gameObject);
 	}
 
 }
