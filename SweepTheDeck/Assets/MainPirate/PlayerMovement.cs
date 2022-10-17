@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Shoot()
     {
+        animator.SetTrigger("Attack");
         //shooting stuff ;D
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
