@@ -6,10 +6,6 @@ public class Enemy : MonoBehaviour
 {
     public Animator animator;
 
-<<<<<<< Updated upstream
-    public int maxHealth = 100;
-    int currentHealth;
-=======
     public int maxHealth { get; }
     public int currentHealth; //{ get; }
     string name { get; }
@@ -32,7 +28,7 @@ public class Enemy : MonoBehaviour
     //        return new Enemy(difficulty * 10, difficulty * 10, type, difficulty * 5);
 	   // }
     //}
->>>>>>> Stashed changes
+
 
     // Start is called before the first frame update
     void Start()

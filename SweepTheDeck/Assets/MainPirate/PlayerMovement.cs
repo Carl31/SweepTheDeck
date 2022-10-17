@@ -10,14 +10,13 @@ public class PlayerMovement : MonoBehaviour
 
     private bool moveLeft, moveRight;
 
-<<<<<<< Updated upstream
     public Animator animator;
-=======
-    public Transform firePoint;
-    
->>>>>>> Stashed changes
 
+    public Transform firePoint;
     public Transform attackPoint;
+
+    private bool isFacingRight = true;
+
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
@@ -41,7 +40,27 @@ public class PlayerMovement : MonoBehaviour
     {
         moveLeft = true;
         animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(-180, 180, 180);
+        if(isFacingRight == true)
+        {
+            Flip();
+        }
+        //gameObject.transform.localScale = new Vector3(-180, 180, 180);
+    }
+    public void MoveRight()
+    {
+        moveRight = true;
+        animator.SetFloat("Speed", 1);
+        if(isFacingRight == false)
+        {
+            Flip();
+        }
+        // gameObject.transform.localScale = new Vector3(180, 180, 180);
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 
     public void Attack()
@@ -56,9 +75,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-    void OnDrawGizmosSelected()
-=======
     public void Shoot()
     {
         //shooting stuff ;D
@@ -66,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnDrawGizmosSelected()
->>>>>>> Stashed changes
     {
         if (attackPoint == null)
             return;
@@ -74,12 +89,7 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    public void MoveRight()
-    {
-        moveRight = true;
-        animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(180, 180, 180);
-    }
+
 
     public void Jump()
     {
