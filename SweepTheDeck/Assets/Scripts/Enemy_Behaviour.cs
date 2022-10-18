@@ -143,6 +143,7 @@ public class Enemy_Behaviour : MonoBehaviour
 			anim.SetBool("IsDead", true);
 			maxspeed = 0;
 			this.enabled = false;
+			Destroy(gameObject);
 		}
     }
 
@@ -190,8 +191,9 @@ public class Enemy_Behaviour : MonoBehaviour
 			anim.SetBool("IsDead", true);
 			isDead = true;
 			maxspeed = 0;
+			Destroy(gameObject);
 		}
-		Destroy(gameObject);
+		
 	}
 
 }
