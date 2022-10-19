@@ -17,7 +17,13 @@ We built Sweep The Deck with:
 * Pixel art created with [Asperite](https://www.aseprite.org/).
 
 ## Story line
-Hugh to paste first paragraph of games story line here.
+You are known among the seven seas for being the most fearsome pirate ever known to mankind.
+Known for sailing solo and defeating pirate groups by himself, he now sails towards the final quest of his
+journey. The legendary island of Peak Whiskey. There lies a treasure of vast riches, unknown to
+mankind. But to get there, he must face a vast army of monsters and skeletons, nothing like the low
+level peasants he had ever faced before. Can he stand his ground, and sweep the decks full of
+terrifyingly strong enemies? Only you can decide his fate.
+
 
 ## Team
 * Product Owner - Carl Santos
