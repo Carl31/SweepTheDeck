@@ -8,7 +8,7 @@ public class CategorySelector : MonoBehaviour
 {
     ToggleGroup toggleGroup;
     string categoryName;
-    void Start()
+    void Awake()
     {
         toggleGroup = GetComponent<ToggleGroup>();
         categoryName = toggleGroup.ActiveToggles().FirstOrDefault().name;
