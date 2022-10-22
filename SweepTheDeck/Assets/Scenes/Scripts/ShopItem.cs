@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShopItem : ScriptableObject
 {
+    public int ID;
     public string title;
     public int cost;
     public int stats;

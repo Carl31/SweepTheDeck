@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3b49c2d17a660458ff3f1d8d2bca3a, type: 3}
   m_Name: Gun 3
   m_EditorClassIdentifier: 
+  ID: 6
   title: 
   cost: 0
   stats: 0
-  type: 1
-  ID: 0
+  category: GUN
+  purchased: 0

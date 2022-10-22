@@ -13,13 +13,12 @@ public class ShopManager : MonoBehaviour
     public ShopTemplate[] shopPanels;
     public Button[] myBuyButtons;
     public GameObject[] buyButtonGO;
-    public Toggle[] equipButtons;
     public CategorySelector cs;
 
-    public const string SWORD_ITEM = "SwordItem";
-    public const string GUN_ITEM = "GunItem";
-    public const string ARMOR_ITEM = "ArmorItem";
-    public const string SKILL_ITEM = "SkillItem";
+    public const string PLAYER_SWORD = "PlayerSword";
+    public const string PLAYER_GUN = "PlayerGun";
+    public const string PLAYER_ARMOR = "PlayerArmor";
+    public const string PLAYER_SKILL = "PlayerSkill";
 
     void Start()
     {
@@ -91,28 +90,13 @@ public class ShopManager : MonoBehaviour
             buyButtonGO[btnNo].SetActive(false);
         }
     }
-
-    public void EquipItem(int btnNo)
+    //this should be in playerSettings
+    public void CheckEquipped()
     {
-        //equip means button is off; it is suggesting for user to equip
-        if (!equipButtons[btnNo].isOn) //item isn't equipped yet
-        {
-            equipButtons[btnNo].GetComponentInChildren<TMP_Text>().SetText("UNEQUIP");
-            equipButtons[btnNo].isOn = true;
-            Debug.Log("unequip btn number " + btnNo);
-            for (int i = 0; i < equipButtons.Length; i++)
-            {
-                if (i != btnNo)
-                {
-                    equipButtons[i].GetComponentInChildren<TMP_Text>().SetText("EQUIP");
-                    equipButtons[i].isOn = false;
-                }
-            }
-        }
-        else //item is equipped; we have to unequip it
-        {
-            equipButtons[btnNo].GetComponentInChildren<TMP_Text>().SetText("EQUIP");
-            equipButtons[btnNo].isOn = false;
-        }
+        int swordIndex = PlayerPrefs.GetInt(PLAYER_SWORD, 0);
+        int gunIndex = PlayerPrefs.GetInt(PLAYER_GUN, 0);
+        int armorIndex = PlayerPrefs.GetInt(PLAYER_ARMOR, 0);
+        int skillIndex = PlayerPrefs.GetInt(PLAYER_SKILL, 0);
+
     }
 }

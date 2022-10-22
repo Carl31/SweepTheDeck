@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Sword", menuName = "Scriptable Objects/New sword")]
 public class Sword : ShopItem
 {
-    public int ID;
     private int damage;
 
     public Sword()

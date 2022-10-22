@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f019502cff28a4bb1177527234bffe, type: 3}
   m_Name: Armor 1
   m_EditorClassIdentifier: 
+  ID: 1
   title: 
   cost: 0
   stats: 0
   category: ARMOR
-  ID: 0
+  purchased: 0

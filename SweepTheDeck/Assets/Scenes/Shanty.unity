@@ -280,6 +280,56 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 438554547459912768, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
   m_PrefabInstance: {fileID: 784721550}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &110589068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110589069}
+  - component: {fileID: 110589070}
+  m_Layer: 5
+  m_Name: SkillToggles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &110589069
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110589068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840411147}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 187.26001, y: -171.22844}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &110589070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110589068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 1
 --- !u!1001 &122757397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,10 +432,14 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EquipItem
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -541,6 +595,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &151137174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151137175}
+  - component: {fileID: 151137176}
+  m_Layer: 5
+  m_Name: GunToggles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &151137175
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151137174}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840411147}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 187.26001, y: -141.22842}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &151137176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151137174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 1
 --- !u!1 &157488960
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +770,56 @@ RectTransform:
   m_AnchoredPosition: {x: -312, y: -184}
   m_SizeDelta: {x: 125.2686, y: 49.5117}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &192166324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 192166325}
+  - component: {fileID: 192166326}
+  m_Layer: 5
+  m_Name: SwordToggles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &192166325
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192166324}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840411147}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 187.26001, y: -126.22844}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &192166326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192166324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 1
 --- !u!1 &320675866
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +999,15 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 8
@@ -1077,7 +1239,15 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 4
@@ -1426,7 +1596,15 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 5
@@ -1519,6 +1697,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 192166325}
+  - {fileID: 151137175}
+  - {fileID: 978208704}
+  - {fileID: 110589069}
   - {fileID: 1229035096}
   m_Father: {fileID: 897210231}
   m_RootOrder: 2
@@ -1598,6 +1780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897210231}
   - component: {fileID: 897210232}
+  - component: {fileID: 897210233}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -1707,7 +1890,25 @@ MonoBehaviour:
   - {fileID: 931479111}
   - {fileID: 1280481206}
   - {fileID: 1920476887}
-  equipButtons:
+  cs: {fileID: 1993269235}
+--- !u!114 &897210233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897210230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a42e52d32b39e42b57d7b58501ed7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordGroup: {fileID: 192166326}
+  gunGroup: {fileID: 151137176}
+  armorGroup: {fileID: 978208705}
+  skillGroup: {fileID: 110589070}
+  shopManager: {fileID: 897210232}
+  toggles:
   - {fileID: 35792368}
   - {fileID: 1741553607}
   - {fileID: 34268200}
@@ -1720,7 +1921,6 @@ MonoBehaviour:
   - {fileID: 365257882}
   - {fileID: 862519589}
   - {fileID: 1463759686}
-  cs: {fileID: 1993269235}
 --- !u!224 &921389669 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
@@ -1840,7 +2040,15 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 3
@@ -1916,7 +2124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1924,7 +2132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1964,11 +2172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 173.66005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -180.76024
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1985,11 +2193,43 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360818784613935590, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6360818784613935590, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 897210232}
+    - target: {fileID: 6360818784613935590, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360818784613935590, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360818784613935590, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360818784613935590, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
 --- !u!224 &930781001 stripped
@@ -2013,6 +2253,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &978208703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978208704}
+  - component: {fileID: 978208705}
+  m_Layer: 5
+  m_Name: ArmorToggles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &978208704
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978208703}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840411147}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 187.26001, y: -156.22844}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &978208705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978208703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 1
 --- !u!224 &998266660 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 438554547459912783, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
@@ -2346,10 +2636,14 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EquipItem
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -2508,7 +2802,7 @@ RectTransform:
   m_Children:
   - {fileID: 1676934433}
   m_Father: {fileID: 840411147}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -2978,7 +3272,15 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 7
@@ -3352,7 +3654,15 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 6
@@ -3962,10 +4272,14 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EquipItem
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -4318,10 +4632,14 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EquipItem
+      value: EquipToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemSettings, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -4771,7 +5089,7 @@ PrefabInstance:
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 897210232}
+      objectReference: {fileID: 897210233}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4786,7 +5104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EquipItem
+      value: EquipToggle
       objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4794,7 +5112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ShopManager, Assembly-CSharp
+      value: ItemSettings, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6314048847373584614, guid: 78e896eb16bf48649a6fbc83ebef949c, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
