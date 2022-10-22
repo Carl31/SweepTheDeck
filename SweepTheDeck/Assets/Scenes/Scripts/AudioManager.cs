@@ -9,7 +9,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     [SerializeField] AudioMixer mixer;
     [SerializeField] AudioSource audioSource; //bgm source
-
+    [SerializeField] AudioSource uiAudioSource; //sfx source
+    [SerializeField] AudioClip uiAudioClip; //sfx source
     public AudioClip[] bgmClips;
 
     public const string MUSIC_KEY = "musicVolume";
@@ -27,38 +28,41 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        //Debug.Log(gameObject.name);
         SceneManager.sceneLoaded += OnSceneLoaded;
-        LoadVolume();
+        LoadVolume(); 
     }
     //called whenever new scene is loaded
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        AudioClip source;
+        AudioClip source = null;
 
         switch (scene.buildIndex)
         {
             case 1:
-                Debug.Log(1);
+                //Debug.Log(1);
                 source = bgmClips[1];
                 break;
             case 2:
-                Debug.Log(2);
+                //Debug.Log(2);
                 source = bgmClips[2];
                 break;
             default:
-                Debug.Log("0 or 3");
+                //Debug.Log("0 or 3");
                 source = bgmClips[0];
                 break;
         }
-        //this command at the moment will give a nullreference error when switching between scenes as
-        //we're amending audioSource which already got deleted at the start
-        if(source != audioSource.clip) 
+        if(source != instance.audioSource.clip) 
         {
-            Debug.Log("doesnt match");
+            //Debug.Log("doesnt match");
             audioSource.enabled = false;
             audioSource.clip = source;
             audioSource.enabled = true;
         }
+    }
+    public void ButtonSFX()
+    {
+        uiAudioSource.PlayOneShot(uiAudioClip);
     }
 
     /*LIST OF PLAYER SFX
