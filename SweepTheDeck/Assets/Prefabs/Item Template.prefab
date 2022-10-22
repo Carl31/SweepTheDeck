@@ -114,9 +114,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-          m_MethodName: EquipItem
+        - m_Target: {fileID: 6746981878222138903, guid: 66fae13fc3d29c14f9d500386303f9d6, type: 3}
+          m_TargetAssemblyTypeName: ItemSettings, Assembly-CSharp
+          m_MethodName: EquipToggle
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1247,13 +1247,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
+        - m_Target: {fileID: 5323276256388942271, guid: 66fae13fc3d29c14f9d500386303f9d6, type: 3}
+          m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+          m_MethodName: PurchaseItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

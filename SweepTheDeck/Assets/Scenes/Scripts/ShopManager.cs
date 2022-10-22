@@ -15,13 +15,15 @@ public class ShopManager : MonoBehaviour
     public GameObject[] buyButtonGO;
     public CategorySelector cs;
 
-    public const string PLAYER_SWORD = "PlayerSword";
-    public const string PLAYER_GUN = "PlayerGun";
-    public const string PLAYER_ARMOR = "PlayerArmor";
-    public const string PLAYER_SKILL = "PlayerSkill";
+    bool[] acquiredItems;
 
     void Start()
     {
+        if (PlayerItems.instance.GetAcquiredItems().Length == 0)
+            acquiredItems = new bool[shopItems.Length];
+        else 
+            acquiredItems = PlayerItems.instance.GetAcquiredItems();
+
         for (int i = 0; i < shopItems.Length; i++)
         {
             if (shopItems[i].category == cs.getCategory())
@@ -31,6 +33,7 @@ public class ShopManager : MonoBehaviour
         }
         coinUI.text = coins.ToString();
         LoadPanels();
+        CheckPurchased();
         CheckPurchaseable();
     }
 
@@ -61,13 +64,13 @@ public class ShopManager : MonoBehaviour
             {
                 shopPanelsGO[i].SetActive(false);
             }
-
         }
         LoadPanels();
+        CheckPurchased();
         CheckPurchaseable();
     }
 
-    public void CheckPurchaseable()
+    void CheckPurchaseable()
     {
         for (int i = 0; i < shopItems.Length; i++)
         {
@@ -86,17 +89,24 @@ public class ShopManager : MonoBehaviour
             coinUI.text = coins.ToString();
             //after unlocking item
             CheckPurchaseable(); //dont remove this
-            Debug.Log(shopItems[btnNo] + "purchased");
             buyButtonGO[btnNo].SetActive(false);
+            acquiredItems[btnNo] = true;
         }
     }
-    //this should be in playerSettings
-    public void CheckEquipped()
+    
+    void CheckPurchased()
     {
-        int swordIndex = PlayerPrefs.GetInt(PLAYER_SWORD, 0);
-        int gunIndex = PlayerPrefs.GetInt(PLAYER_GUN, 0);
-        int armorIndex = PlayerPrefs.GetInt(PLAYER_ARMOR, 0);
-        int skillIndex = PlayerPrefs.GetInt(PLAYER_SKILL, 0);
+        for(int i = 0; i < acquiredItems.Length; i++)
+        {
+            if (acquiredItems[i])
+                buyButtonGO[i].SetActive(false);
+            else
+                buyButtonGO[i].SetActive(true);
+        }
+    }
 
+    private void OnDisable()
+    {
+        PlayerItems.instance.SetAcquiredItems(acquiredItems);
     }
 }

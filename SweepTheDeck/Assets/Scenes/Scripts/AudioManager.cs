@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
         SceneManager.sceneLoaded += OnSceneLoaded;
         LoadVolume(); 
     }
@@ -52,8 +52,6 @@ public class AudioManager : MonoBehaviour
                 source = bgmClips[0];
                 break;
         }
-        //this command at the moment will give a nullreference error when switching between scenes as
-        //we're amending audioSource which already got deleted at the start
         if(source != instance.audioSource.clip) 
         {
             //Debug.Log("doesnt match");

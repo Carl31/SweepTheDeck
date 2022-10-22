@@ -11,15 +11,14 @@ public class ItemSettings : MonoBehaviour
     [SerializeField] ToggleGroup gunGroup;
     [SerializeField] ToggleGroup armorGroup;
     [SerializeField] ToggleGroup skillGroup;
-    public ShopManager shopManager;
+    public ShopManager instance;
     public Toggle[] toggles;
-   
     private ShopItem[] itemList;
     private string[] items;
 
     private void Awake()
     {
-        itemList = shopManager.shopItems;
+        itemList = instance.shopItems;
         items = new string[itemList.Length];
         SortToggleCategories();
     }
@@ -36,18 +35,30 @@ public class ItemSettings : MonoBehaviour
             switch (itemList[i].category)
             {
                 case "SWORD":
+                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_SWORD, 0))
+                        toggles[i].isOn = true;
+                    toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
                     swordGroup.RegisterToggle(toggles[i]);
                     items[i] = "SWORD";
                     break;
                 case "GUN":
+                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_GUN, 0))
+                        toggles[i].isOn = true;
+                    toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
                     gunGroup.RegisterToggle(toggles[i]);
                     items[i] = "GUN";
                     break;
                 case "ARMOR":
+                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_ARMOR, 0))
+                        toggles[i].isOn = true;
+                    toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
                     armorGroup.RegisterToggle(toggles[i]);
                     items[i] = "ARMOR";
                     break;
                 case "SKILL":
+                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_SKILL, 0))
+                        toggles[i].isOn = true;
+                    toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
                     skillGroup.RegisterToggle(toggles[i]);
                     items[i] = "SKILL";
                     break;
@@ -57,34 +68,34 @@ public class ItemSettings : MonoBehaviour
     
     public void EquipToggle(int btnNo)
     {
-        int itemID = itemList[btnNo].ID;
         string index = items[btnNo];
         switch (index)
         {
             case "SWORD":
                 swordGroup.NotifyToggleOn(toggles[btnNo]);
-                PlayerPrefs.SetInt(ShopManager.PLAYER_SWORD, itemID);
-                Debug.Log("Sword " + itemID + " toggled: " + toggles[btnNo].isOn);
+                PlayerItems.instance.SetSword((Sword)itemList[btnNo]);
+                PlayerPrefs.SetInt(PlayerItems.PLAYER_SWORD, btnNo);
                 break;
             case "GUN":
                 gunGroup.NotifyToggleOn(toggles[btnNo]);
-                PlayerPrefs.SetInt(ShopManager.PLAYER_GUN, itemID);
-                Debug.Log("Gun " + itemID + " toggled: " + toggles[btnNo].isOn);
+                PlayerItems.instance.SetGun((Gun)itemList[btnNo]);
+                PlayerPrefs.SetInt(PlayerItems.PLAYER_GUN, btnNo);
                 break;
             case "ARMOR":
                 armorGroup.NotifyToggleOn(toggles[btnNo]);
-                PlayerPrefs.SetInt(ShopManager.PLAYER_ARMOR, itemID);
-                Debug.Log("Armor " + itemID + " toggled: " + toggles[btnNo].isOn);
+                PlayerItems.instance.SetArmor((Armor)itemList[btnNo]);
+                PlayerPrefs.SetInt(PlayerItems.PLAYER_ARMOR, btnNo);
                 break;
             case "SKILL":
                 skillGroup.NotifyToggleOn(toggles[btnNo]);
-                PlayerPrefs.SetInt(ShopManager.PLAYER_SKILL, itemID);
-                Debug.Log("Skill " + itemID + " toggled: " + toggles[btnNo].isOn);
+                PlayerItems.instance.SetSkill((Skill)itemList[btnNo]);
+                PlayerPrefs.SetInt(PlayerItems.PLAYER_SKILL, btnNo);
                 break;
         }
         for(int i = 0; i < toggles.Length; i++)
         {
             toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
         }
+        PlayerPrefs.Save();
     }
 }

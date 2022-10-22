@@ -6,14 +6,8 @@ using System.Linq;
 
 public class CategorySelector : MonoBehaviour
 {
-    ToggleGroup toggleGroup;
+    [SerializeField] ToggleGroup toggleGroup;
     string categoryName;
-    void Awake()
-    {
-        toggleGroup = GetComponent<ToggleGroup>();
-        categoryName = toggleGroup.ActiveToggles().FirstOrDefault().name;
-    }
-
     public string getCategory()
     {
         categoryName = toggleGroup.ActiveToggles().FirstOrDefault().name;
