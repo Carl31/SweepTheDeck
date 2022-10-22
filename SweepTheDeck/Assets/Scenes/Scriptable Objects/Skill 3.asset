@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c6bd6ef8eb0d94a84fbdfb4c2120b0, type: 3}
-  m_Name: Armor 5
+  m_Script: {fileID: 11500000, guid: 4d3cda8dc4930ef43a277a7181202db8, type: 3}
+  m_Name: Skill 3
   m_EditorClassIdentifier: 
-  title: Ultimate Pirate Drip
-  stats: 5000
-  cost: 200
-  category: Armor
+  ID: 9
+  title: 
+  cost: 0
+  stats: 0
+  category: SKILL
+  purchased: 0

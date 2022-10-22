@@ -24,44 +24,53 @@ public class SwitchScene : MonoBehaviour
     }
     public void BackButton() //for settings + shanty
     {
-        int returnSceneIndex = PlayerPrefs.GetInt(PREV_PREV_SCENE, 0);
+        ButtonClick();
+        int returnSceneIndex = PlayerPrefs.GetInt(PREV_PREV_SCENE);
+        Debug.Log("came from scene " + returnSceneIndex);
         SetCurrentScene(returnSceneIndex);
         SceneManager.LoadScene(returnSceneIndex);
     }
 
     public void LoadMainMenu()
     {
-        SetCurrentScene(0); //SceneManager.GetSceneByName("StartingScreen").buildIndex;
+        ButtonClick();
+        SetCurrentScene(0);
         SceneManager.LoadScene("StartingScreen");
-        Debug.Log("StartingScreen");
+        //Debug.Log("StartingScreen");
     }
 
     public void LoadInGame()
     {
-        SetCurrentScene(1); //SceneManager.GetSceneByName("Battle").buildIndex;
+        ButtonClick();
+        SetCurrentScene(1);
         SceneManager.LoadScene("Battle");
-        Debug.Log("Battle");
+        //Debug.Log("Battle");
     }
 
     public void LoadShanty()
     {
-        SetCurrentScene(2); //SceneManager.GetSceneByName("Shanty").buildIndex;
+        ButtonClick();
+        SetCurrentScene(2);
         SceneManager.LoadScene("Shanty");
-        Debug.Log("Shanty");
+        PlayerPrefs.SetInt(PREV_PREV_SCENE, PlayerPrefs.GetInt(PREV_SCENE));
+        //Debug.Log("Shanty");
     }
 
     public void LoadSettings()
     {
-        SetCurrentScene(3); //SceneManager.GetSceneByName("Settings").buildIndex;
+        ButtonClick();
+        SetCurrentScene(3);
         SceneManager.LoadScene("Settings");
-        Debug.Log("Settings");
+        PlayerPrefs.SetInt(PREV_PREV_SCENE, PlayerPrefs.GetInt(PREV_SCENE));
+        //Debug.Log("Settings");
     }
 
     public void LoadLeaderboard()
     {
+        ButtonClick();
         //SetPrevScene(SceneManager.GetActiveScene().buildIndex);
         //SetCurrentScene(4); //SceneManager.GetSceneByName("Leaderboard").buildIndex;
-        Debug.Log("LoadLeaderboard Clicked");
+        //Debug.Log("LoadLeaderboard Clicked");
     }
 
     public void QuitGame()
@@ -72,6 +81,7 @@ public class SwitchScene : MonoBehaviour
 
     public void Feedback()
     {
+        ButtonClick();
         Application.OpenURL("https://docs.google.com/forms/d/12jqOnK9puSLrtxIkX0zqMkPwTXJD51CWmECBIveFZP8/viewform?edit_requested=true");
         Debug.Log("opening feedback");
     }
@@ -90,5 +100,9 @@ public class SwitchScene : MonoBehaviour
     public void SetPrevPrevScene(int prev2Scene)
     {
         PlayerPrefs.SetInt(PREV_PREV_SCENE, prev2Scene);
+    }
+    void ButtonClick()
+    {
+        AudioManager.instance.ButtonSFX();
     }
 }

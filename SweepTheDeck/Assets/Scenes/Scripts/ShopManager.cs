@@ -14,28 +14,40 @@ public class ShopManager : MonoBehaviour
     public Button[] myBuyButtons;
     public GameObject[] buyButtonGO;
     public CategorySelector cs;
-   
+
+    bool[] acquiredItems;
+
     void Start()
     {
-        string defaultCategory = "Sword";
-        for(int i = 0; i < shopItems.Length; i++)
+        if (PlayerItems.instance.GetAcquiredItems().Length == 0)
+            acquiredItems = new bool[shopItems.Length];
+        else 
+            acquiredItems = PlayerItems.instance.GetAcquiredItems();
+
+        for (int i = 0; i < shopItems.Length; i++)
         {
-            if(shopItems[i].category == defaultCategory)
+            if (shopItems[i].category == cs.getCategory())
             {
                 shopPanelsGO[i].SetActive(true);
             }
         }
         coinUI.text = coins.ToString();
         LoadPanels();
+        CheckPurchased();
         CheckPurchaseable();
     }
 
     public void LoadPanels()
     {
-        for(int i = 0; i < shopItems.Length; i++)
+        string stats = "DAMAGE: ";
+        if (cs.getCategory() == "ARMOR")
+            stats = "DEFENSE: ";
+        if (cs.getCategory() == "SKILL")
+            stats = "SKILL STATS: ";
+        for (int i = 0; i < shopItems.Length; i++)
         {
             shopPanels[i].titleText.text = shopItems[i].title;
-            shopPanels[i].statsText.text = "Stats: " + shopItems[i].stats.ToString();
+            shopPanels[i].statsText.text = stats + shopItems[i].stats.ToString();
             shopPanels[i].costText.text = shopItems[i].cost.ToString();
         }
     }
@@ -47,19 +59,20 @@ public class ShopManager : MonoBehaviour
             if (shopItems[i].category == cs.getCategory())
             {
                 shopPanelsGO[i].SetActive(true);
-            } else
+            }
+            else
             {
                 shopPanelsGO[i].SetActive(false);
             }
-                
         }
         LoadPanels();
+        CheckPurchased();
         CheckPurchaseable();
     }
 
-    public void CheckPurchaseable()
+    void CheckPurchaseable()
     {
-        for(int i = 0; i < shopItems.Length; i++)
+        for (int i = 0; i < shopItems.Length; i++)
         {
             if (coins >= shopItems[i].cost)
                 myBuyButtons[i].interactable = true;
@@ -70,15 +83,30 @@ public class ShopManager : MonoBehaviour
 
     public void PurchaseItem(int btnNo)
     {
-        //Debug.Log(shopItems[btnNo].name);
         if (coins >= shopItems[btnNo].cost)
         {
             coins = coins - shopItems[btnNo].cost;
             coinUI.text = coins.ToString();
             //after unlocking item
             CheckPurchaseable(); //dont remove this
-            Debug.Log(shopItems[btnNo] + "purchased");
             buyButtonGO[btnNo].SetActive(false);
+            acquiredItems[btnNo] = true;
         }
+    }
+    
+    void CheckPurchased()
+    {
+        for(int i = 0; i < acquiredItems.Length; i++)
+        {
+            if (acquiredItems[i])
+                buyButtonGO[i].SetActive(false);
+            else
+                buyButtonGO[i].SetActive(true);
+        }
+    }
+
+    private void OnDisable()
+    {
+        PlayerItems.instance.SetAcquiredItems(acquiredItems);
     }
 }
