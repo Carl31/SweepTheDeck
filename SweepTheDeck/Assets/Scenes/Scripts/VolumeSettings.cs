@@ -29,8 +29,8 @@ public class VolumeSettings : MonoBehaviour
 
     void Start()
     {
-        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY);
-        soundSlider.value = PlayerPrefs.GetFloat(AudioManager.SOUND_KEY);
+        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY, 1f);
+        soundSlider.value = PlayerPrefs.GetFloat(AudioManager.SOUND_KEY, 1f);
         musicToggle.isOn = PlayerPrefs.GetInt(MUSIC_MUTE) == 1 ? true : false; //0 = unmuted 1 = muted; which means default is false as in unmuted
         soundToggle.isOn = PlayerPrefs.GetInt(SOUND_MUTE) == 1 ? true : false; //0 = unmuted 1 = muted; which means default is false as in unmuted
     }

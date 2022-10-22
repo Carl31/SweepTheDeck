@@ -33,14 +33,22 @@ public class PauseScreen : SwitchScene
         //not my problem lmfao
     }
 
-    public void SettingsFromPause() //extends SwitchScenes so that the song resumes as it switches to a different scene
+    public void SettingsFromPause()
     {
+        if(PlayerPrefs.HasKey(PREV_PREV_SCENE))
+        {
+            PlayerPrefs.SetInt(PREV_PREV_SCENE, SceneManager.GetActiveScene().buildIndex);
+        }
         AudioListener.pause = false;
         LoadSettings();
     }
 
-    public void MainMenuFromPause() //extends SwitchScenes so that the song resumes as it switches to a different scene
+    public void MainMenuFromPause()
     {
+        if (PlayerPrefs.HasKey(PREV_PREV_SCENE))
+        {
+            PlayerPrefs.SetInt(PREV_PREV_SCENE, SceneManager.GetActiveScene().buildIndex);
+        }
         AudioListener.pause = false;
         LoadMainMenu();
     }

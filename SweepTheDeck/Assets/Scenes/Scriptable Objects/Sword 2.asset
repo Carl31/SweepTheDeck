@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7b6746330038a46993922fda406d38, type: 3}
+  m_Script: {fileID: 11500000, guid: d1c6bd6ef8eb0d94a84fbdfb4c2120b0, type: 3}
   m_Name: Sword 2
   m_EditorClassIdentifier: 
-  ID: 11
-  title: 
-  cost: 0
-  stats: 0
-  category: SWORD
-  purchased: 0
+  title: Cutlass
+  stats: 10
+  cost: 10
+  category: Sword
