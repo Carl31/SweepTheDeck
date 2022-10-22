@@ -7,13 +7,18 @@ public class Enemy : MonoBehaviour
     public Animator animator;
 
     public int maxHealth { get; }
+<<<<<<< HEAD
     int currentHealth { get; set; }
+=======
+    public int currentHealth; //{ get; }
+>>>>>>> CharacterDevelopment
     string name { get; }
     int damage { get; }
     int gold { get; } // number of coins dropped upon death -- need to implement this
 
     private Enemy(int maxHealth, int damage, string name, int gold)
     {
+<<<<<<< HEAD
         this.maxHealth = maxHealth;
         this.damage = damage;
         this.name = name;
@@ -29,6 +34,23 @@ public class Enemy : MonoBehaviour
 	    }
         return null;
     }
+=======
+        maxHealth = maxHealth;
+        damage = damage;
+        name = name;
+        currentHealth = maxHealth;
+	    gold = gold;
+    }
+
+    //public static Enemy CreateEnemy(string type, int difficulty) // difficulty determines health and damage, type determines the type of sprite -- need to implement this
+    //{
+    //    if (difficulty <= 10 && difficulty >= 1) // need to also check for type -- only "skeletons" and "zombies"?
+	   // {
+    //        return new Enemy(difficulty * 10, difficulty * 10, type, difficulty * 5);
+	   // }
+    //}
+
+>>>>>>> CharacterDevelopment
 
     // Start is called before the first frame update
     void Start()

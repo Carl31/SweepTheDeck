@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<<< HEAD:SweepTheDeck/Assets/Sprites/Hero Knight - Pixel Art/Demo/HeroKnight_Green.prefab.meta
 fileFormatVersion: 2
 guid: aae6983af49177040af143e44c92b78a
@@ -7,6 +8,8 @@ PrefabImporter:
   assetBundleName: 
   assetBundleVariant: 
 ========
+=======
+>>>>>>> CharacterDevelopment
 fileFormatVersion: 2
 guid: 96ac645bd9af0bd468716a12e0953f10
 DefaultImporter:
@@ -14,4 +17,7 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+<<<<<<< HEAD
 >>>>>>>> origin/screenDevelopment:SweepTheDeck/Assets/Scenes/Shanty.unity.meta
+=======
+>>>>>>> CharacterDevelopment

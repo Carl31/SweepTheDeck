@@ -10,25 +10,41 @@ public class Enemy_Behaviour : MonoBehaviour
 	private bool isDead = false;
 	private bool isAttacking = false;
 	private string aux = "";
+
 	private float attackRange = 1.3f;
 	private Transform target;
 	private int attackCooldown = 2;
+
 	private float cooldownTimer = 0f;
 	private float previousX = 0;
-	private float currentHealth = 10;
 
+	public float currentHealth;
+	public float MaxHealth = 100;
+
+	private float attackDamage = 40f;
+	public Transform attackPoint;
+
+	public HealthbarBehaviour Healthbar;
+
+	public LayerMask playerLayers;
 
 	//--
 	void Start()
 	{
+		currentHealth = MaxHealth;
+		Healthbar.SetHealth(currentHealth, MaxHealth);
 		maxspeed = 2f;//Set walk speed
 		faceright = true;//Default right side
 		anim = this.gameObject.GetComponent<Animator>();
 		//anim.SetBool("walk", false);//Walking animation is deactivated
-		anim.SetBool("dead", false);//Dying animation is deactivated
+		anim.SetBool("IsDead", false);//Dying animation is deactivated
 		anim.SetBool("jump", false);//Jumping animation is deactivated
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+<<<<<<< HEAD
 		Physics2D.IgnoreLayerCollision(0, 3);
+=======
+		Physics2D.IgnoreLayerCollision(6, 7);
+>>>>>>> CharacterDevelopment
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -109,6 +125,10 @@ public class Enemy_Behaviour : MonoBehaviour
 			if (Vector2.Distance(transform.position, target.position) > attackRange)
 			{
 				anim.SetFloat("Speed", maxspeed);
+<<<<<<< HEAD
+=======
+				anim.ResetTrigger("Attack");
+>>>>>>> CharacterDevelopment
 				Vector2 tempVec = Vector2.MoveTowards(transform.position, target.position, maxspeed * Time.deltaTime);
 				tempVec.y = transform.position.y;
 				transform.position = tempVec;
@@ -119,16 +139,30 @@ public class Enemy_Behaviour : MonoBehaviour
 			}
 			else
 			{
+<<<<<<< HEAD
 				anim.SetFloat("Speed", maxspeed);
+=======
+				anim.SetFloat("Speed", 0);
+>>>>>>> CharacterDevelopment
 				attack();
 			}
 		}
 		else
+<<<<<<< HEAD
 		{
 			die();
 			anim.SetBool("IsDead", true);
 		}
 	}
+=======
+        {
+			anim.SetBool("IsDead", true);
+			maxspeed = 0;
+			this.enabled = false;
+			Destroy(gameObject);
+		}
+    }
+>>>>>>> CharacterDevelopment
 
 	void Flip()
 	{
@@ -139,13 +173,21 @@ public class Enemy_Behaviour : MonoBehaviour
 	}
 
 	void attack()
+<<<<<<< HEAD
 	{
+=======
+    {
+		Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+>>>>>>> CharacterDevelopment
 
 		if (cooldownTimer >= attackCooldown)
 		{
 			cooldownTimer = 0f;
-			anim.SetBool("attack", true);
-			anim.Play("attacking", -1, 0f);
+			anim.SetTrigger("Attack");
+			foreach (Collider2D player in hitPlayer)
+			{
+				player.GetComponent<PlayerMovement>().takeDamage(attackDamage);
+			}
 		}
 
 	}
@@ -154,23 +196,33 @@ public class Enemy_Behaviour : MonoBehaviour
 	public void takeDamage(float damage)
 	{
 		currentHealth -= damage;
-
+		Healthbar.SetHealth(currentHealth, MaxHealth);
 		if (currentHealth <= 0 && isDead == false)
 		{
 			Debug.Log("Enemy died!");
 			isDead = true;
 		}
 	}
-
+	
 	// Die
 	void die()
 	{
 		if (!isDead)
+<<<<<<< HEAD
 		{
+=======
+        {
+>>>>>>> CharacterDevelopment
 			anim.SetBool("IsDead", true);
 			isDead = true;
+			maxspeed = 0;
+			Destroy(gameObject);
 		}
+<<<<<<< HEAD
 		this.enabled = false;
+=======
+		
+>>>>>>> CharacterDevelopment
 	}
 
 }
