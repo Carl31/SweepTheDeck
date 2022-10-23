@@ -5,11 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Gun", menuName = "Scriptable Objects/New gun")]
 public class Gun : ShopItem
 {
-    private int damage;
+    private int damage { get; set; }
 
     public Gun()
     {
-        ID = 0;
+        title = "DEFAULT";
+        damage = 150;
+        category = "GUN";
+    }
+
+    public Gun(int damage)
+    {
         damage = stats;
         category = "GUN";
     }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sword 3
   m_EditorClassIdentifier: 
   ID: 12
-  title: 
-  cost: 0
+  title: Diamond Sword
+  cost: 850
   stats: 0
   category: SWORD
   purchased: 0

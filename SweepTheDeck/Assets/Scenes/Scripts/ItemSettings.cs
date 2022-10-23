@@ -11,20 +11,24 @@ public class ItemSettings : MonoBehaviour
     [SerializeField] ToggleGroup gunGroup;
     [SerializeField] ToggleGroup armorGroup;
     [SerializeField] ToggleGroup skillGroup;
-    public ShopManager instance;
+    public ShopManager shopInstance;
     public Toggle[] toggles;
     private ShopItem[] itemList;
     private string[] items;
 
     private void Awake()
     {
-        itemList = instance.shopItems;
+        itemList = shopInstance.shopItems;
         items = new string[itemList.Length];
         SortToggleCategories();
     }
 
     void OnDisable()
     {
+        Debug.Log(PlayerItems.instance.GetSword().title);
+        Debug.Log(PlayerItems.instance.GetGun().title);
+        Debug.Log(PlayerItems.instance.GetArmor().title);
+        Debug.Log(PlayerItems.instance.GetSkill().title);
         PlayerPrefs.Save();
     }
 
@@ -69,33 +73,65 @@ public class ItemSettings : MonoBehaviour
     public void EquipToggle(int btnNo)
     {
         string index = items[btnNo];
+        bool isEquipped = toggles[btnNo].isOn;
         switch (index)
         {
             case "SWORD":
                 swordGroup.NotifyToggleOn(toggles[btnNo]);
-                PlayerItems.instance.SetSword((Sword)itemList[btnNo]);
-                PlayerPrefs.SetInt(PlayerItems.PLAYER_SWORD, btnNo);
+                if(!isEquipped)
+                {
+                    PlayerItems.instance.SetSword(PlayerItems.instance.defaultSword);
+                    PlayerPrefs.SetInt(PlayerItems.PLAYER_SWORD, -1);
+                } else
+                {
+                    PlayerItems.instance.SetSword((Sword)itemList[btnNo]);
+                    PlayerPrefs.SetInt(PlayerItems.PLAYER_SWORD, btnNo);
+                }
                 break;
             case "GUN":
                 gunGroup.NotifyToggleOn(toggles[btnNo]);
-                PlayerItems.instance.SetGun((Gun)itemList[btnNo]);
-                PlayerPrefs.SetInt(PlayerItems.PLAYER_GUN, btnNo);
+                if (!isEquipped)
+                {
+                    PlayerItems.instance.SetGun(PlayerItems.instance.defaultGun);
+                    PlayerPrefs.SetInt(PlayerItems.PLAYER_GUN, -1);
+                } else
+                {
+                    PlayerItems.instance.SetGun((Gun)itemList[btnNo]);
+                    PlayerPrefs.SetInt(PlayerItems.PLAYER_GUN, btnNo);
+                }
                 break;
             case "ARMOR":
                 armorGroup.NotifyToggleOn(toggles[btnNo]);
-                PlayerItems.instance.SetArmor((Armor)itemList[btnNo]);
-                PlayerPrefs.SetInt(PlayerItems.PLAYER_ARMOR, btnNo);
+                if (!isEquipped)
+                {
+                    PlayerItems.instance.SetArmor(PlayerItems.instance.defaultArmor);
+                    PlayerPrefs.SetInt(PlayerItems.PLAYER_ARMOR, -1);
+                }
+                else
+                {
+                    PlayerItems.instance.SetArmor((Armor)itemList[btnNo]);
+                    PlayerPrefs.SetInt(PlayerItems.PLAYER_ARMOR, btnNo);
+                }
                 break;
             case "SKILL":
                 skillGroup.NotifyToggleOn(toggles[btnNo]);
-                PlayerItems.instance.SetSkill((Skill)itemList[btnNo]);
-                PlayerPrefs.SetInt(PlayerItems.PLAYER_SKILL, btnNo);
+                if (!isEquipped)
+                {
+                    PlayerItems.instance.SetSkill(PlayerItems.instance.defaultSkill);
+                    PlayerPrefs.SetInt(PlayerItems.PLAYER_SKILL, -1);
+                }
+                else
+                {
+                    PlayerItems.instance.SetSkill((Skill)itemList[btnNo]);
+                    PlayerPrefs.SetInt(PlayerItems.PLAYER_SKILL, btnNo);
+                }
                 break;
         }
         for(int i = 0; i < toggles.Length; i++)
         {
             toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
         }
+        shopInstance.SetPlayerModel();
         PlayerPrefs.Save();
     }
 }

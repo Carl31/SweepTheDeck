@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Armor 3
   m_EditorClassIdentifier: 
   ID: 3
-  title: 
-  cost: 0
+  title: Diamond Armor
+  cost: 800
   stats: 0
   category: ARMOR
   purchased: 0

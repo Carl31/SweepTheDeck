@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skill 2
   m_EditorClassIdentifier: 
   ID: 8
-  title: 
-  cost: 0
+  title: Instaheal
+  cost: 60
   stats: 0
   category: SKILL
   purchased: 0

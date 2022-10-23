@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skill 3
   m_EditorClassIdentifier: 
   ID: 9
-  title: 
-  cost: 0
+  title: Yohoho
+  cost: 180
   stats: 0
   category: SKILL
   purchased: 0

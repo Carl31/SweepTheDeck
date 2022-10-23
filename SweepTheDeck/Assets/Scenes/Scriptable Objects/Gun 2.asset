@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Gun 2
   m_EditorClassIdentifier: 
   ID: 5
-  title: 
-  cost: 0
+  title: Pistol
+  cost: 350
   stats: 0
   category: GUN
   purchased: 0

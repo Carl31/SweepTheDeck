@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sword 1
   m_EditorClassIdentifier: 
   ID: 10
-  title: 
-  cost: 0
+  title: Gold Sword
+  cost: 300
   stats: 0
   category: SWORD
   purchased: 0

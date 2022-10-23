@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Gun 1
   m_EditorClassIdentifier: 
   ID: 4
-  title: 
-  cost: 0
+  title: Flintlock
+  cost: 80
   stats: 0
   category: GUN
   purchased: 0

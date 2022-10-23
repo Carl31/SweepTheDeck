@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Armor 2
   m_EditorClassIdentifier: 
   ID: 2
-  title: 
-  cost: 0
+  title: Platinum Armor
+  cost: 500
   stats: 0
   category: ARMOR
   purchased: 0

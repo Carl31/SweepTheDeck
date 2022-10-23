@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skill 1
   m_EditorClassIdentifier: 
   ID: 7
-  title: 
-  cost: 0
+  title: Fireball
+  cost: 30
   stats: 0
   category: SKILL
   purchased: 0

@@ -5,12 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Skill", menuName = "Scriptable Objects/New skill")]
 public class Skill : ShopItem
 {
-    private int damage;
+    private int damage { get; set; }
 
     public Skill()
     {
-        ID = 0;
-        damage = stats;
+        title = "DEFAULT";
+        damage = 0;
+        category = "SKILL";
+    }
+
+    public Skill(int damage)
+    {
+        this.damage = stats;
         category = "SKILL";
     }
 }

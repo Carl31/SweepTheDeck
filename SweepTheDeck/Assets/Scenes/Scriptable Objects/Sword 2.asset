@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sword 2
   m_EditorClassIdentifier: 
   ID: 11
-  title: 
-  cost: 0
+  title: Platinum Sword
+  cost: 600
   stats: 0
   category: SWORD
   purchased: 0

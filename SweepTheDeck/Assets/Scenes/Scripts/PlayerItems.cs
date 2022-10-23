@@ -8,6 +8,8 @@ public class PlayerItems : MonoBehaviour
     public static PlayerItems instance;
     bool[] acquiredItems = new bool[12];
 
+    public Sword defaultSword; public Gun defaultGun; public Armor defaultArmor; public Skill defaultSkill;
+
     Sword sword;
     Gun gun;
     Armor armor;
@@ -23,7 +25,12 @@ public class PlayerItems : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-        }else
+            instance.sword = defaultSword;
+            instance.gun = defaultGun;
+            instance.armor = defaultArmor;
+            instance.skill = defaultSkill;
+        }
+        else
         {
             Destroy(instance);
         }

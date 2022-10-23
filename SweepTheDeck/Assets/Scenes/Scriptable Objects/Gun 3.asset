@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Gun 3
   m_EditorClassIdentifier: 
   ID: 6
-  title: 
-  cost: 0
+  title: Cannon
+  cost: 900
   stats: 0
   category: GUN
   purchased: 0
