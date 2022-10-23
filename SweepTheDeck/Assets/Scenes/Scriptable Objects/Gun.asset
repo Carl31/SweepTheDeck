@@ -17,3 +17,4 @@ MonoBehaviour:
   stats: 0
   category: GUN
   purchased: 0
+  icon: {fileID: 21300000, guid: 119dd09e211d9e54ca7cb919c48150f3, type: 3}

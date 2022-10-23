@@ -25,10 +25,10 @@ public class ItemSettings : MonoBehaviour
 
     void OnDisable()
     {
-        Debug.Log(PlayerItems.instance.GetSword().title);
-        Debug.Log(PlayerItems.instance.GetGun().title);
-        Debug.Log(PlayerItems.instance.GetArmor().title);
-        Debug.Log(PlayerItems.instance.GetSkill().title);
+        //Debug.Log(PlayerItems.instance.GetSword().title);
+        //Debug.Log(PlayerItems.instance.GetGun().title);
+        //Debug.Log(PlayerItems.instance.GetArmor().title);
+        //Debug.Log(PlayerItems.instance.GetSkill().title);
         PlayerPrefs.Save();
     }
 
@@ -74,6 +74,7 @@ public class ItemSettings : MonoBehaviour
     {
         string index = items[btnNo];
         bool isEquipped = toggles[btnNo].isOn;
+        AudioManager.instance.PlayEquipSFX(isEquipped);
         switch (index)
         {
             case "SWORD":

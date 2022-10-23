@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7b6746330038a46993922fda406d38, type: 3}
   m_Name: Sword 2
   m_EditorClassIdentifier: 
-  ID: 11
   title: Platinum Sword
   cost: 600
   stats: 0
   category: SWORD
   purchased: 0
+  icon: {fileID: 21300000, guid: 071f12352688afc489474c40342fce25, type: 3}

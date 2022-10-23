@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerItems : MonoBehaviour
 {
     public static PlayerItems instance;
-    bool[] acquiredItems = new bool[12];
+    bool[] acquiredItems;
     int coins;
 
     public Sword defaultSword; public Gun defaultGun; public Armor defaultArmor; public Skill defaultSkill;
@@ -29,11 +29,17 @@ public class PlayerItems : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            acquiredItems = new bool[12];
             instance.sword = defaultSword;
             instance.gun = defaultGun;
             instance.armor = defaultArmor;
             instance.skill = defaultSkill;
             instance.coins = 0;
+            PlayerPrefs.SetInt(PLAYER_COINS, 100);
+            PlayerPrefs.SetInt(PLAYER_SWORD, -1);
+            PlayerPrefs.SetInt(PLAYER_GUN, -1);
+            PlayerPrefs.SetInt(PLAYER_ARMOR, -1);
+            PlayerPrefs.SetInt(PLAYER_SKILL, -1);
             PlayerPrefs.SetString(PLAYER_RESOURCE, "ShantyPirateModel\\00");
         }
         else
@@ -118,7 +124,7 @@ public class PlayerItems : MonoBehaviour
         armorRank++;
         fileName += objectRank.ToString() + armorRank.ToString();
         PlayerPrefs.SetString(PlayerItems.PLAYER_RESOURCE, fileName);
-        Debug.Log(fileName);
+        //Debug.Log(fileName);
         return fileName;
     }
 }

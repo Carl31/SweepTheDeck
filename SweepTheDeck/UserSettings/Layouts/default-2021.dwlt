@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Console
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 125
+  controlID: 83
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 306.39996
     height: 722.8
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 53
+  controlID: 94
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -182,7 +182,7 @@ MonoBehaviour:
   - {fileID: 23}
   - {fileID: 14}
   m_Selected: 3
-  m_LastSelected: 0
+  m_LastSelected: 4
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 124
+  controlID: 82
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -337,7 +337,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 25608
+  m_LastSelectedObjectID: 35358
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -359,17 +359,17 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 622.4
-    width: 956.6
-    height: 153
+    y: 551.2
+    width: 891.8
+    height: 224.19998
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_MixersTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 25662
+    m_SelectedIDs: b6640000
+    m_LastClickedID: 25782
     m_ExpandedIDs: 12eb343c
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -485,12 +485,12 @@ MonoBehaviour:
       oldMaxSizes: 
       oldSplitSize: 0
     m_HorizontalSplitter:
-      ID: 60
+      ID: 31
       splitterInitialOffset: 276
       currentActiveSplitter: -1
       realSizes:
-      - 312
-      - 644.8
+      - 290.4
+      - 601.6
       relativeSizes:
       - 0.3259346
       - 0.6740654
@@ -500,7 +500,7 @@ MonoBehaviour:
       maxSizes:
       - 0
       - 0
-      lastTotalSize: 956.8
+      lastTotalSize: 892
       splitSize: 6
       xOffset: 0
       m_Version: 1
@@ -760,7 +760,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scenes/Scriptable Objects
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -774,7 +774,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ea670000
     m_LastClickedID: 26602
-    m_ExpandedIDs: 00000000c662000030650000326500003465000036650000386500003a6500003c6500003e65000040650000426500004465000046650000
+    m_ExpandedIDs: 0000000026640000e0660000e2660000e4660000e6660000e8660000ea660000ec660000ee660000f0660000f2660000f4660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -799,24 +799,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 37.399994}
+    scrollPos: {x: 0, y: 84}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000c662000030650000326500003465000036650000386500003a6500003c6500003e650000406500004265000044650000
+    m_ExpandedIDs: ffffffff0000000026640000b6640000e0660000e2660000e4660000e6660000e8660000ea660000ec660000ee660000f2660000f466000042670000566700005a670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Shanty
+      m_OriginalName: Shanty
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 26464
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 2}
     m_SearchString: 
@@ -932,7 +932,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c6b4ffffc0baffffb8bbffff44bcffff14f9ffff1efbffff166200008a6600008e6600009a660000fc660000bea300008ea40000b0a60000
+      m_ExpandedIDs: d298ffffd698ffff2a99ffff2e99ffffb299ffffb699ffffb6a6fffff0aaffff10abfffff6adffff5eaeffff64aeffffbec5ffff1aebffff96ebffff60f1ffff4ef2ffff26fbffff6a620000c8620000c4630000e28500004086000080870000de870000da880000ea88000048890000ec8900004a8a0000468b0000da130100f613010002140100181401002c140100381401006e140100402501004e2501007e25010088250100a4250100aa250100ba250100e0250100e6250100fc250100022601006a2601008c26010096260100c4260100de260100e2260100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -989,8 +989,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -100, y: -25.600006}
+      snapOffset: {x: -100, y: -25.600006}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -1011,7 +1011,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -1203,9 +1203,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 318.17407, y: 212.45816, z: -1.208729}
+    m_Target: {x: 318.52396, y: 186.42607, z: 7.3819857}
     speed: 2
-    m_Value: {x: 318.17407, y: 212.45816, z: -1.208729}
+    m_Value: {x: 318.52396, y: 186.42607, z: 7.3819857}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1256,9 +1256,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 264.07352
+    m_Target: 261.61664
     speed: 2
-    m_Value: 264.07352
+    m_Value: 261.61664
   m_Ortho:
     m_Target: 1
     speed: 2

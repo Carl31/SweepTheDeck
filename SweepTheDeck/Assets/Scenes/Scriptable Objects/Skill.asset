@@ -17,3 +17,4 @@ MonoBehaviour:
   stats: 0
   category: SKILL
   purchased: 0
+  icon: {fileID: 21300000, guid: f8d93c7dbdeb6524fba4d66b73c62216, type: 3}

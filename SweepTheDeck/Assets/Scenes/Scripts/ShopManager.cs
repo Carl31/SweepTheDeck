@@ -70,8 +70,8 @@ public class ShopManager : MonoBehaviour
             }
         }
         LoadPanels();
-        CheckPurchased();
         CheckPurchaseable();
+        CheckPurchased();
     }
 
     void CheckPurchaseable()
@@ -87,6 +87,7 @@ public class ShopManager : MonoBehaviour
 
     public void PurchaseItem(int btnNo)
     {
+        AudioManager.instance.PlayPurchaseSFX();
         if (coins >= shopItems[btnNo].cost)
         {
             coins = coins - shopItems[btnNo].cost;
@@ -106,7 +107,7 @@ public class ShopManager : MonoBehaviour
                 buyButtonGO[i].SetActive(false);
             else
                 buyButtonGO[i].SetActive(true);
-            Debug.Log(acquiredItems[i]);
+            //Debug.Log(acquiredItems[i]);
         }
     }
     public void SetPlayerModel()
@@ -121,10 +122,14 @@ public class ShopManager : MonoBehaviour
         if (armorRank != -1) { armorRank %= 3; } armorRank++;
         fileName += objectRank.ToString() + armorRank.ToString();
         PlayerPrefs.SetString(PlayerItems.PLAYER_RESOURCE, fileName);
-        Debug.Log(fileName);
-
+        //Debug.Log(fileName);
         sprite = Resources.Load<Sprite>(fileName);
         playerModel.GetComponent<Image>().sprite = sprite;
+    }
+
+    public void PlaySelectSFX()
+    {
+        AudioManager.instance.PlaySelectCategorySFX();
     }
 
     void OnDisable()

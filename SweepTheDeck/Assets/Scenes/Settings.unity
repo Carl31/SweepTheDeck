@@ -2637,6 +2637,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 6e3aa03a1189d424c81cb992248792e4, type: 3}
     - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
+      propertyPath: sfxClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: ecf3b67cfaea34c48b87cc248d143c1b, type: 3}
+    - target: {fileID: 8833434137862631514, guid: cd683672b8d455f499887fcbcfcfe9bc, type: 3}
       propertyPath: musicClips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: e71e4e4903e7241458607f9e04030eef, type: 3}

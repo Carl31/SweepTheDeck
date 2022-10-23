@@ -17,3 +17,4 @@ MonoBehaviour:
   stats: 0
   category: SWORD
   purchased: 0
+  icon: {fileID: 21300000, guid: 93360bb1f62d69540a1abddaff9a8848, type: 3}

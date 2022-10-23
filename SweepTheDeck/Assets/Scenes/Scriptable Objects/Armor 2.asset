@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f019502cff28a4bb1177527234bffe, type: 3}
   m_Name: Armor 2
   m_EditorClassIdentifier: 
-  ID: 2
   title: Platinum Armor
   cost: 500
   stats: 0
   category: ARMOR
   purchased: 0
+  icon: {fileID: 21300000, guid: f796ff92b6fc4314c8e8c11e778d5ce9, type: 3}

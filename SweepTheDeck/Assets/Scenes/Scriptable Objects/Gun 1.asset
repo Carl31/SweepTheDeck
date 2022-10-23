@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3b49c2d17a660458ff3f1d8d2bca3a, type: 3}
   m_Name: Gun 1
   m_EditorClassIdentifier: 
-  ID: 4
   title: Flintlock
   cost: 80
   stats: 0
   category: GUN
   purchased: 0
+  icon: {fileID: 21300000, guid: 864954a3749b55c45ac867e6fb340faf, type: 3}

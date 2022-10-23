@@ -10,8 +10,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioMixer mixer;
     [SerializeField] AudioSource audioSource; //bgm source
     [SerializeField] AudioSource uiAudioSource; //sfx source
-    [SerializeField] AudioClip uiAudioClip; //sfx source
+    AudioClip uiAudioClip; //sfx clip
     public AudioClip[] bgmClips;
+    public AudioClip[] sfxClips;
 
     public const string MUSIC_KEY = "musicVolume";
     public const string SOUND_KEY = "soundVolume";
@@ -60,8 +61,31 @@ public class AudioManager : MonoBehaviour
             audioSource.enabled = true;
         }
     }
-    public void ButtonSFX()
+    public void PlayButtonSFX() //general buttons
     {
+        uiAudioClip = sfxClips[0];
+        uiAudioSource.PlayOneShot(uiAudioClip);
+    }
+
+    //shanty UI
+    public void PlayPurchaseSFX()
+    {
+        uiAudioClip = sfxClips[1];
+        uiAudioSource.PlayOneShot(uiAudioClip);
+    }
+
+    public void PlayEquipSFX(bool isEquipped)
+    {
+        if(isEquipped)
+            uiAudioClip = sfxClips[2];
+        else
+            uiAudioClip = sfxClips[3];
+        uiAudioSource.PlayOneShot(uiAudioClip);
+    }
+
+    public void PlaySelectCategorySFX()
+    {
+        uiAudioClip = sfxClips[4];
         uiAudioSource.PlayOneShot(uiAudioClip);
     }
 

@@ -103,6 +103,6 @@ public class SwitchScene : MonoBehaviour
     }
     void ButtonClick()
     {
-        AudioManager.instance.ButtonSFX();
+        AudioManager.instance.PlayButtonSFX();
     }
 }
