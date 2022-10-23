@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerItems : MonoBehaviour
 {
     public static PlayerItems instance;
     bool[] acquiredItems = new bool[12];
+    int coins;
 
     public Sword defaultSword; public Gun defaultGun; public Armor defaultArmor; public Skill defaultSkill;
 
@@ -15,10 +17,12 @@ public class PlayerItems : MonoBehaviour
     Armor armor;
     Skill skill;
 
+    public const string PLAYER_COINS = "PlayerCoins";
     public const string PLAYER_SWORD = "PlayerSword";
     public const string PLAYER_GUN = "PlayerGun";
     public const string PLAYER_ARMOR = "PlayerArmor";
     public const string PLAYER_SKILL = "PlayerSkill";
+    public const string PLAYER_RESOURCE = "PlayerResource";
 
     void Awake()
     {
@@ -29,21 +33,45 @@ public class PlayerItems : MonoBehaviour
             instance.gun = defaultGun;
             instance.armor = defaultArmor;
             instance.skill = defaultSkill;
+            instance.coins = 0;
+            PlayerPrefs.SetString(PLAYER_RESOURCE, "ShantyPirateModel\\00");
         }
         else
         {
             Destroy(instance);
         }
-        DontDestroyOnLoad(instance);
+        DontDestroyOnLoad(instance); 
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (scene.buildIndex == 0)
+        {
+            Sprite sprite;
+            GameObject playerModel = GameObject.Find("MainPirate");
+            string fileName = SetPlayerModel();
+
+            sprite = Resources.Load<Sprite>(fileName);
+            playerModel.GetComponent<Image>().sprite = sprite;
+        }
     }
     public bool[] GetAcquiredItems()
     {
         return acquiredItems;
     }
-
     public void SetAcquiredItems(bool[] b)
     {
         acquiredItems = b;
+    }
+    
+    public int GetCoins()
+    {
+        return coins;
+    }
+
+    public void SetCoins(int c)
+    {
+        coins = c;
     }
 
     public Sword GetSword()
@@ -78,5 +106,19 @@ public class PlayerItems : MonoBehaviour
     {
         skill = s;
     }
-
+    string SetPlayerModel()
+    {
+        string fileName = "ShantyPirateModel\\0";
+        //rank: default = 0; gold = 1; platinum = 2; diamond = 3;
+        int objectRank = PlayerPrefs.GetInt(PlayerItems.PLAYER_SWORD, -1);
+        if (objectRank != -1) { objectRank %= 3; }
+        objectRank++;
+        int armorRank = PlayerPrefs.GetInt(PlayerItems.PLAYER_ARMOR, -1);
+        if (armorRank != -1) { armorRank %= 3; }
+        armorRank++;
+        fileName += objectRank.ToString() + armorRank.ToString();
+        PlayerPrefs.SetString(PlayerItems.PLAYER_RESOURCE, fileName);
+        Debug.Log(fileName);
+        return fileName;
+    }
 }

@@ -9,4 +9,5 @@ public class ShopItem : ScriptableObject
     public int stats;
     public string category;
     public bool purchased;
+    public Sprite icon;
 }
