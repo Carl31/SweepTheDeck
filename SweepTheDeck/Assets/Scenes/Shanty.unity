@@ -1837,7 +1837,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5323276257132922848}
           m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-          m_MethodName: SetPlayerModel
+          m_MethodName: PlaySelectSFX
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1980,7 +1980,7 @@ RectTransform:
   m_Children:
   - {fileID: 1014107785}
   m_Father: {fileID: 1074577421}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2514,7 +2514,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5323276257132922848}
           m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-          m_MethodName: SetPlayerModel
+          m_MethodName: PlaySelectSFX
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2718,6 +2718,7 @@ RectTransform:
   m_Children:
   - {fileID: 178415537}
   - {fileID: 7394236030796659820}
+  - {fileID: 1768397967}
   - {fileID: 908512426}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -2976,7 +2977,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5323276257132922848}
           m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-          m_MethodName: SetPlayerModel
+          m_MethodName: PlaySelectSFX
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4778,15 +4779,15 @@ RectTransform:
   m_GameObject: {fileID: 1768397966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9175, y: 0.9175, z: 0.9175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 7394236030796659820}
-  m_RootOrder: 4
+  m_Father: {fileID: 1074577421}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 55.05002, y: 357.94998}
+  m_AnchoredPosition: {x: 60.000023, y: -60.00473}
   m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1768397968
@@ -5490,7 +5491,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5323276257132922848}
           m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-          m_MethodName: SetPlayerModel
+          m_MethodName: PlaySelectSFX
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5993,7 +5994,6 @@ Transform:
   - {fileID: 687471998}
   - {fileID: 1770424632}
   - {fileID: 2124217889}
-  - {fileID: 1768397967}
   m_Father: {fileID: 1074577421}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
