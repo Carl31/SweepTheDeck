@@ -40,11 +40,8 @@ public class Enemy_Behaviour : MonoBehaviour
 		anim.SetBool("IsDead", false);//Dying animation is deactivated
 		anim.SetBool("jump", false);//Jumping animation is deactivated
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-<<<<<<< HEAD
-		Physics2D.IgnoreLayerCollision(0, 3);
-=======
-		Physics2D.IgnoreLayerCollision(6, 7);
->>>>>>> CharacterDevelopment
+
+		Physics2D.IgnoreLayerCollision(3, 7);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -122,13 +119,11 @@ public class Enemy_Behaviour : MonoBehaviour
 
 
 			// MOVEMENT
-			if (Vector2.Distance(transform.position, target.position) > attackRange)
+			if (Vector2.Distance(transform.position, target.position) > attackRange) // if not within attacking range, move toward player
 			{
 				anim.SetFloat("Speed", maxspeed);
-<<<<<<< HEAD
-=======
 				anim.ResetTrigger("Attack");
->>>>>>> CharacterDevelopment
+
 				Vector2 tempVec = Vector2.MoveTowards(transform.position, target.position, maxspeed * Time.deltaTime);
 				tempVec.y = transform.position.y;
 				transform.position = tempVec;
@@ -137,32 +132,20 @@ public class Enemy_Behaviour : MonoBehaviour
 				// Debug.Log("Current: "+tempVec.x);
 				previousX = tempVec.x;
 			}
-			else
+			else // within attack range, attack player
 			{
-<<<<<<< HEAD
-				anim.SetFloat("Speed", maxspeed);
-=======
 				anim.SetFloat("Speed", 0);
->>>>>>> CharacterDevelopment
 				attack();
 			}
 		}
 		else
-<<<<<<< HEAD
-		{
-			die();
-			anim.SetBool("IsDead", true);
-		}
-	}
-=======
-        {
+		{ 
 			anim.SetBool("IsDead", true);
 			maxspeed = 0;
 			this.enabled = false;
 			Destroy(gameObject);
 		}
     }
->>>>>>> CharacterDevelopment
 
 	void Flip()
 	{
@@ -173,12 +156,8 @@ public class Enemy_Behaviour : MonoBehaviour
 	}
 
 	void attack()
-<<<<<<< HEAD
-	{
-=======
     {
 		Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
->>>>>>> CharacterDevelopment
 
 		if (cooldownTimer >= attackCooldown)
 		{
@@ -208,21 +187,12 @@ public class Enemy_Behaviour : MonoBehaviour
 	void die()
 	{
 		if (!isDead)
-<<<<<<< HEAD
-		{
-=======
         {
->>>>>>> CharacterDevelopment
 			anim.SetBool("IsDead", true);
 			isDead = true;
 			maxspeed = 0;
 			Destroy(gameObject);
 		}
-<<<<<<< HEAD
-		this.enabled = false;
-=======
-		
->>>>>>> CharacterDevelopment
 	}
 
 }

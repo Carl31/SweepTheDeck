@@ -4,25 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - Enemy
-  - Type
-  - Ground
-=======
-  - Ground
-  - Enemy
   - Bullet
->>>>>>> CharacterDevelopment
+  - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
-  - Enemy
+  - 
   - Player
-  - PauseUI
+  - 
   - 
   - 
   - 

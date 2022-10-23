@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     private bool moveLeft, moveRight;
     private bool isDead = false;
 
-    public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public Animator animator;
@@ -22,11 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isFacingRight = true;
 
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
-
-    public int attackDamage = 40;
-
     public HealthbarBehaviour Healthbar;
     public float currentHealth;
     public float MaxHealth = 100f;
@@ -34,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bulletPrefab;
 
     private bool grounded;
+
+    public const string COINS = "coins"; // global coin variable
+    public int coins; // coins collected in this game instance
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,15 +44,13 @@ public class PlayerMovement : MonoBehaviour
         moveLeft = false;
         moveRight = false;
         animator = GetComponent<Animator>();
+        coins = getCoins();
     }
 
     public void MoveLeft()
     {
         moveLeft = true;
         animator.SetFloat("Speed", 1);
-<<<<<<< HEAD
-        gameObject.transform.localScale = new Vector3(-180, 180, 180);
-=======
         if(isFacingRight == true)
         {
             Flip();
@@ -75,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isFacingRight = !isFacingRight;
         transform.Rotate(0f, 180f, 0f);
->>>>>>> CharacterDevelopment
     }
 
     public void Attack()
@@ -84,33 +80,14 @@ public class PlayerMovement : MonoBehaviour
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-<<<<<<< HEAD
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy_Behaviour>().takeDamage(attackDamage);
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-=======
-        foreach(Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<Enemy_Behaviour>().takeDamage(attackDamage);
-        }
->>>>>>> CharacterDevelopment
-    }
-
     public void takeDamage(float damage)
     {
-<<<<<<< HEAD
-        moveRight = true;
-        animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(180, 180, 180);
-=======
         currentHealth -= damage;
         Healthbar.SetHealth(currentHealth, MaxHealth);
 
@@ -118,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
         {
             die();
         }
->>>>>>> CharacterDevelopment
     }
 
     public void Shoot()
@@ -153,6 +129,12 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             animator.SetBool("IsJumping", false);
+        }
+        else if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            coins++;
+            Debug.Log("Player coins: " + coins); // for debugging
         }
     }
     void die()
@@ -190,4 +172,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    // for retrieving player coin count
+    public int getCoins()
+    {
+        int coins = PlayerPrefs.GetInt(COINS);
+        return coins;
+    }
+
+    // for setting player coin count (after each round or at death)
+    public void setCoins(int coins)
+    {
+        PlayerPrefs.SetInt(COINS, coins);
+    }
+
 }
