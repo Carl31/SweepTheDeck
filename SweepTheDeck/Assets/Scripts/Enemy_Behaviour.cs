@@ -3,8 +3,8 @@ using System.Collections;
 //Example Script for motion (Walk, jump and dying), for dying press 'k'...
 public class Enemy_Behaviour : MonoBehaviour
 {
-	private float maxspeed; //walk speed
-	Animator anim;
+	public float maxspeed; //walk speed
+	public Animator anim;
 	private bool faceright; //face side of sprite activated
 	private bool jumping = false;
 	private bool isDead = false;
@@ -40,7 +40,6 @@ public class Enemy_Behaviour : MonoBehaviour
 		anim.SetBool("IsDead", false);//Dying animation is deactivated
 		anim.SetBool("jump", false);//Jumping animation is deactivated
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
 		Physics2D.IgnoreLayerCollision(3, 7);
 	}
 
@@ -134,7 +133,7 @@ public class Enemy_Behaviour : MonoBehaviour
 			}
 			else // within attack range, attack player
 			{
-				anim.SetFloat("Speed", 0);
+				anim.SetFloat("Speed", maxspeed);
 				attack();
 			}
 		}
