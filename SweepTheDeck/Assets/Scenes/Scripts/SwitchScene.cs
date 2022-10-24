@@ -70,7 +70,7 @@ public class SwitchScene : MonoBehaviour
         ButtonClick();
         //SetPrevScene(SceneManager.GetActiveScene().buildIndex);
         //SetCurrentScene(4); //SceneManager.GetSceneByName("Leaderboard").buildIndex;
-        //Debug.Log("LoadLeaderboard Clicked");
+        //Debug.Log("LoadLeaderboard");
     }
 
     public void QuitGame()
@@ -103,6 +103,6 @@ public class SwitchScene : MonoBehaviour
     }
     void ButtonClick()
     {
-        AudioManager.instance.ButtonSFX();
+        AudioManager.instance.PlayButtonSFX();
     }
 }

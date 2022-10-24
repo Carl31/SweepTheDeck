@@ -177,11 +177,16 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: ce2aea616960722419cdd10202d2d496, type: 2}
   audioSource: {fileID: 8794881435882787701}
   uiAudioSource: {fileID: 6133223378038527252}
-  uiAudioClip: {fileID: 8300000, guid: 011361ba7888a954587b4ff7e3739388, type: 3}
   bgmClips:
   - {fileID: 8300000, guid: e71e4e4903e7241458607f9e04030eef, type: 3}
   - {fileID: 8300000, guid: efdb5332bde59604a9b7191cf4ab3e46, type: 3}
   - {fileID: 8300000, guid: e72d9a157bc20c542ad1b5cfa60f4233, type: 3}
+  sfxClips:
+  - {fileID: 8300000, guid: 011361ba7888a954587b4ff7e3739388, type: 3}
+  - {fileID: 8300000, guid: d799bc418bbd9c344aa68566be6f63fd, type: 3}
+  - {fileID: 8300000, guid: 2839b8fa381d08d46a288372a095ebf9, type: 3}
+  - {fileID: 8300000, guid: 69a7bd7bf0f7a0c4bbcae687bdb62631, type: 3}
+  - {fileID: 8300000, guid: 513a0b49ee51b6c41af6ab27463ce5a9, type: 3}
 --- !u!82 &8794881435882787701
 AudioSource:
   m_ObjectHideFlags: 0
