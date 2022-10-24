@@ -9,30 +9,69 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed, jumpForce;
 
     private bool moveLeft, moveRight;
+    private bool isDead = false;
 
-    public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public Animator animator;
     public int attackDamage = 40;
 
+    public Transform firePoint;
+    public Transform attackPoint;
+
+    private bool isFacingRight = true;
+
+    public HealthbarBehaviour Healthbar;
+    public float currentHealth;
+    public float MaxHealth = 100f;
+
+    public GameObject bulletPrefab;
+
     private bool grounded;
+
+    public const string COINS = "coins"; // global coin variable
+    public int coins; // coins collected in this game instance
+
+
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = MaxHealth;
+        Healthbar.SetHealth(currentHealth, MaxHealth);
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = 8f;
         jumpForce = 15f;
         moveLeft = false;
         moveRight = false;
         animator = GetComponent<Animator>();
+        coins = getCoins();
     }
 
     public void MoveLeft()
     {
         moveLeft = true;
         animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(-180, 180, 180);
+        if(isFacingRight == true)
+        {
+            Flip();
+        }
+        //gameObject.transform.localScale = new Vector3(-180, 180, 180);
+    }
+    public void MoveRight()
+    {
+        moveRight = true;
+        animator.SetFloat("Speed", 1);
+        if(isFacingRight == false)
+        {
+            Flip();
+        }
+        // gameObject.transform.localScale = new Vector3(180, 180, 180);
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 
     public void Attack()
@@ -44,22 +83,37 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy_Behaviour>().takeDamage(attackDamage);
+            //enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
+    }
+
+    public void takeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Healthbar.SetHealth(currentHealth, MaxHealth);
+
+        if (currentHealth <= 0)
+        {
+            die();
+        }
+    }
+
+    public void Shoot()
+    {
+        animator.SetTrigger("Attack");
+        //shooting stuff ;D
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
             return;
+
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    public void MoveRight()
-    {
-        moveRight = true;
-        animator.SetFloat("Speed", 1);
-        gameObject.transform.localScale = new Vector3(180, 180, 180);
-    }
+
 
     public void Jump()
     {
@@ -77,6 +131,24 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsJumping", false);
         }
+        else if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            coins++;
+            Debug.Log("Player coins: " + coins); // for debugging
+            CoinCounter.instance.UpdateCount(1);
+        }
+    }
+    void die()
+    {
+        if (!isDead)
+        {
+            animator.SetBool("IsDead", true);
+            isDead = true;
+            this.enabled = false;
+            //Destroy(gameObject);
+        }
+        //Destroy(gameObject);
     }
 
     public void StopMoving()
@@ -101,5 +173,24 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
 
+    }
+
+    // for retrieving player coin count
+    public int getCoins()
+    {
+        int coins = PlayerPrefs.GetInt(COINS);
+        return coins;
+    }
+
+    // for setting player coin count (after each round or at death)
+    public void setCoins(int coins)
+    {
+        PlayerPrefs.SetInt(COINS, coins);
+    }
+
+
+    void OnDisable()
+    {
+        setCoins(coins);
     }
 }

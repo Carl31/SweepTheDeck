@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:SweepTheDeck/Assets/Scripts/Enemy_Behaviour.cs.meta
 guid: 58289c363cbb1d34cbb0973e5ca66171
 ========
 guid: 911be9e889f8bab4cbc8b72fa7a556e6
 >>>>>>>> origin/screenDevelopment:SweepTheDeck/Assets/Scripts/CharacterController2D.cs.meta
+=======
+guid: 911be9e889f8bab4cbc8b72fa7a556e6
+>>>>>>> CharacterDevelopment
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
