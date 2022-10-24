@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    //public EnemyFactory factory;
+    public GameObject game;
 
     public enum WaveState {  SPAWNING, WAITING, COUNTING };
         // SPAWNING - wave is in the process of spawning specified number of enemies
@@ -20,11 +22,14 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name; // for name of each wave
-        public Transform enemy; // reference to prefab that we want to instantiate at each spawn point - NOTE: will have to have reference an enemy constructor for multiple enemy types!
+        //public Enemy enemy; // reference to prefab that we want to instantiate at each spawn point - NOTE: will have to have reference an enemy constructor for multiple enemy types!
         public int enemyAmount; // num of enemy spawns per wave
         public float spawnRate; // enemy spawn rate 
-
+        public int difficulty;
     }
+
+    public GameObject enemyPref; // enemy prefabs
+    public GameObject coinPref; // enemy prefabs
 
     public Transform[] enemySpawnPoints; // array of enemy spawn points (in our case, only left and right side of screen).
     public Wave[] waves; // our array of waves
@@ -42,35 +47,41 @@ public class WaveSpawner : MonoBehaviour
             Debug.Log("Error: no spawn points have been made!");
         }
         waveCountdown = waveInterval;
+        //enemyPref.transform.SetParent(game.transform);
+        Physics2D.IgnoreLayerCollision(8, 8);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (state == WaveState.WAITING)
+        if (nextWave < waves.Length) // to ensure waves stop after final wave
         {
-            if (!IsAnEnemyAlive())
+            if (state == WaveState.WAITING)
             {
-                // begin a new round
-                NewWave();
+                if (!IsAnEnemyAlive())
+                {
+                    // begin a new round
+                    NewWave();
 
+                }
+                else // keep waiting
+                {
+                    return;
+                }
             }
-            else // keep waiting
-            {
-                return;
-            }
-        }
 
-        if (waveCountdown <= 0) // if it's time to spawn the next wave
-        {
-            if (state != WaveState.SPAWNING) // and if not already spawning the current wave, then start spawning the next wave
+
+            if (waveCountdown <= 0) // if it's time to spawn the next wave
             {
-                StartCoroutine(SpawnWave(waves[nextWave])); // have to use 'StartCoroutine' since it's a IEnumerator function
+                if (state != WaveState.SPAWNING) // and if not already spawning the current wave, then start spawning the next wave
+                {
+                    StartCoroutine(SpawnWave(waves[nextWave])); // have to use 'StartCoroutine' since it's a IEnumerator function
+                }
             }
-        }
-        else
-        {
-            waveCountdown -= Time.deltaTime; // else decrease countdown
+            else
+            {
+                waveCountdown -= Time.deltaTime; // else decrease countdown
+            }
         }
     }
 
@@ -80,7 +91,32 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < wave.enemyAmount; i++) // spawn all enemies
         {
-            SpawnEnemy(wave.enemy);
+            int spawnSide = Random.Range(0, enemySpawnPoints.Length);
+            enemyPref.transform.localScale = new Vector3(-4f, 4f, 0.0f); // scaling enemy appropriately
+
+            Transform currentSpawnPoint = enemySpawnPoints[spawnSide]; // spawsn enemy on either left or right of screen (randomly)
+            //currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f); // to have enemy spawn directly on ground
+
+            GameObject tempObj = Instantiate(enemyPref, currentSpawnPoint.position, currentSpawnPoint.rotation);
+            tempObj.transform.SetParent(game.transform);
+
+            enemyPref.GetComponent<Enemy>().speed = wave.difficulty * 2;
+            enemyPref.GetComponent<Enemy>().maxHealth = wave.difficulty * 10;
+            enemyPref.GetComponent<Enemy>().damage = wave.difficulty * 10;
+            enemyPref.GetComponent<Enemy>().name = "zombie";
+            enemyPref.GetComponent<Enemy>().gold = wave.difficulty;
+
+            
+
+            //Enemy temp = AssignEnemyStats(game, "zombie", wave.difficulty); // creates new enemy using factory constructor
+            Debug.Log(enemyPref.GetComponent<Enemy>());
+            //SpawnEnemy(temp);
+            Debug.Log("Spawning enemy: " + enemyPref.GetComponent<Enemy>().name);
+
+
+
+            /*GameObject tempObj = Instantiate(enemy.enemyPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation);
+            tempObj.transform.SetParent(game.transform);*/
             yield return new WaitForSeconds(1f / wave.spawnRate); // applies specified enemy spawn delay (i.e the whole purpose of using IEnumerator)
         }
 
@@ -89,18 +125,22 @@ public class WaveSpawner : MonoBehaviour
         yield break; // returns nothing -- avoids error since IEnumerator functions need to return a value
     }
 
-    void SpawnEnemy(Transform enemy) // spawns an enemy
+    /*void SpawnEnemy(Enemy enemy) // spawns an enemy
     {
         // spawn enemy here
         Debug.Log("Spawning enemy: " + enemy.name);
 
         int spawnSide = Random.Range(0, enemySpawnPoints.Length);
-        enemy.transform.localScale = new Vector3(-2.6f, 2.6f, 0.0f);
+        enemy.enemyPrefab.transform.localScale = new Vector3(-4f, 4f, 0.0f); // scaling enemy appropriately
 
         Transform currentSpawnPoint = enemySpawnPoints[spawnSide]; // spawsn enemy on either left or right of screen (randomly)
-        currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f);
-        Instantiate(enemy, currentSpawnPoint.position, currentSpawnPoint.rotation);
-    }
+        currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f); // to have enemy spawn directly on ground
+
+        *//*Debug.Log("1");
+        GameObject tempObj = Instantiate(enemy.enemyPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation);
+        tempObj.transform.SetParent(game.transform);
+        Debug.Log("2");*//*
+    }*/
 
     bool IsAnEnemyAlive() // returns if there are any more enemies left in the wave
     {
@@ -108,11 +148,12 @@ public class WaveSpawner : MonoBehaviour
         if (enemySearchCountdown <= 0)
         {
             enemySearchCountdown = 1f; // reset countdown
-            if (GameObject.FindGameObjectsWithTag("Enemy") == null)
+
+            GameObject[] tempArr = GameObject.FindGameObjectsWithTag("Enemy");
+            if (tempArr.Length == 0)
             {
                 return false; // no enemies exist
             }
-
         }
 
         return true; 
@@ -125,14 +166,26 @@ public class WaveSpawner : MonoBehaviour
         state = WaveState.COUNTING;
         waveCountdown = waveInterval;
 
-        if (nextWave + 1 > waves.Length - 1)
+        if (nextWave + 1 >= waves.Length)
         {
             //nextWave = 0; // enable this line for restarting at wave 1.
             Debug.Log("All waves complete!");
         }
-        else
-        {
-            nextWave++;
-        }
+        nextWave++;
     }
+
+    /*public Enemy AssignEnemyStats(GameObject enemy, string type, int difficulty)
+    {
+        if (difficulty <= 10 && difficulty >= 1) // need to also check for type -- only "skeletons" and "zombies"?
+        {
+            GameObject.Find("Enemy").GetComponent<Enemy>().speed = 2;
+            *//*enemy.GetComponent(Enemy).speed = 2;
+            enemy.maxHealth = difficulty * 10;
+            enemy.damage = difficulty * 10;
+            enemy.name = type;
+            enemy.gold = difficulty;
+            return enemy;*//*
+        }
+        return null;
+    }*/
 }

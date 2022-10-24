@@ -56,7 +56,12 @@ sysinfo.txt
 *.unitypackage
 
 # Crashlytics generated file
+<<<<<<< HEAD
 crashlytics-build.properties
 
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+=======
+crashlytics-build.properties
+>>>>>>> CharacterDevelopment
+*.meta
