@@ -14,20 +14,21 @@ public static class EnemyFactory
         return null;
     }
 
-    public static Enemy AssignEnemyStats(GameObject enemy, string type, int difficulty)
+    /*public static Enemy AssignEnemyStats(GameObject enemy, string type, int difficulty)
     {
         if (difficulty <= 10 && difficulty >= 1) // need to also check for type -- only "skeletons" and "zombies"?
         {
-            enemy.Find("Enemy").GetComponent(Enemy).speed = 2;
-            /*enemy.GetComponent(Enemy).speed = 2;
+            Enemy temp = enemy.Find("Enemy").GetComponent(Enemy);
+            temp.speed = 2;
+            *//*enemy.GetComponent(Enemy).speed = 2;
             enemy.maxHealth = difficulty * 10;
             enemy.damage = difficulty * 10;
             enemy.name = type;
             enemy.gold = difficulty;
-            return enemy;*/
+            return enemy;*//*
         }
         return null;
-    }
+    }*/
 
     /*   // Start is called before the first frame update
        void Start()

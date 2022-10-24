@@ -28,11 +28,8 @@ public class WaveSpawner : MonoBehaviour
         public int difficulty;
     }
 
-    public GameObject[] enemyPrefs; // enemy prefabs
-    foreach (GameObject enemy in enemyPrefs)
-    {
-        enemy.transform.SetParent(game.transform);
-    }
+    public GameObject enemyPref; // enemy prefabs
+    
 
     public Transform[] enemySpawnPoints; // array of enemy spawn points (in our case, only left and right side of screen).
     public Wave[] waves; // our array of waves
@@ -50,6 +47,7 @@ public class WaveSpawner : MonoBehaviour
             Debug.Log("Error: no spawn points have been made!");
         }
         waveCountdown = waveInterval;
+        //enemyPref.transform.SetParent(game.transform);
     }
 
     // Update is called once per frame
@@ -88,10 +86,33 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < wave.enemyAmount; i++) // spawn all enemies
         {
-            Enemy temp = EnemyFactory.AssignEnemyStats(game, "zombie", wave.difficulty); // creates new enemy using factory constructor
-            //temp.enemyPrefab.Transform = wave.trans;
-            Debug.Log(temp);
-            SpawnEnemy(temp);
+            int spawnSide = Random.Range(0, enemySpawnPoints.Length);
+            enemyPref.transform.localScale = new Vector3(-4f, 4f, 0.0f); // scaling enemy appropriately
+
+            Transform currentSpawnPoint = enemySpawnPoints[spawnSide]; // spawsn enemy on either left or right of screen (randomly)
+            currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f); // to have enemy spawn directly on ground
+
+            GameObject tempObj = Instantiate(enemyPref, currentSpawnPoint.position, currentSpawnPoint.rotation);
+            tempObj.transform.SetParent(game.transform);
+            //Debug.Log("2");
+
+            enemyPref.GetComponent<Enemy>().speed = 2;
+            enemyPref.GetComponent<Enemy>().maxHealth = wave.difficulty * 10;
+            enemyPref.GetComponent<Enemy>().damage = wave.difficulty * 10;
+            enemyPref.GetComponent<Enemy>().name = "zombie";
+            enemyPref.GetComponent<Enemy>().gold = wave.difficulty;
+
+
+
+            //Enemy temp = AssignEnemyStats(game, "zombie", wave.difficulty); // creates new enemy using factory constructor
+            Debug.Log(enemyPref.GetComponent<Enemy>());
+            //SpawnEnemy(temp);
+            Debug.Log("Spawning enemy: " + enemyPref.GetComponent<Enemy>().name);
+
+
+
+            /*GameObject tempObj = Instantiate(enemy.enemyPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation);
+            tempObj.transform.SetParent(game.transform);*/
             yield return new WaitForSeconds(1f / wave.spawnRate); // applies specified enemy spawn delay (i.e the whole purpose of using IEnumerator)
         }
 
@@ -100,7 +121,7 @@ public class WaveSpawner : MonoBehaviour
         yield break; // returns nothing -- avoids error since IEnumerator functions need to return a value
     }
 
-    void SpawnEnemy(Enemy enemy) // spawns an enemy
+    /*void SpawnEnemy(Enemy enemy) // spawns an enemy
     {
         // spawn enemy here
         Debug.Log("Spawning enemy: " + enemy.name);
@@ -111,10 +132,11 @@ public class WaveSpawner : MonoBehaviour
         Transform currentSpawnPoint = enemySpawnPoints[spawnSide]; // spawsn enemy on either left or right of screen (randomly)
         currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f); // to have enemy spawn directly on ground
 
-        //Debug.Log("1");
-        Instantiate(enemy.enemyPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation);
-        //Debug.Log("2");
-    }
+        *//*Debug.Log("1");
+        GameObject tempObj = Instantiate(enemy.enemyPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation);
+        tempObj.transform.SetParent(game.transform);
+        Debug.Log("2");*//*
+    }*/
 
     bool IsAnEnemyAlive() // returns if there are any more enemies left in the wave
     {
@@ -149,4 +171,19 @@ public class WaveSpawner : MonoBehaviour
             nextWave++;
         }
     }
+
+    /*public Enemy AssignEnemyStats(GameObject enemy, string type, int difficulty)
+    {
+        if (difficulty <= 10 && difficulty >= 1) // need to also check for type -- only "skeletons" and "zombies"?
+        {
+            GameObject.Find("Enemy").GetComponent<Enemy>().speed = 2;
+            *//*enemy.GetComponent(Enemy).speed = 2;
+            enemy.maxHealth = difficulty * 10;
+            enemy.damage = difficulty * 10;
+            enemy.name = type;
+            enemy.gold = difficulty;
+            return enemy;*//*
+        }
+        return null;
+    }*/
 }

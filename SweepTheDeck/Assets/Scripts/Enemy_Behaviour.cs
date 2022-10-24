@@ -43,7 +43,7 @@ public class Enemy_Behaviour : MonoBehaviour
 		// getting reference to player object
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-		Physics2D.IgnoreLayerCollision(3, 7); // switch around
+		Physics2D.IgnoreLayerCollision(7, 3);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -82,9 +82,8 @@ public class Enemy_Behaviour : MonoBehaviour
 					Debug.Log("NULL TARGET");
 				}	
 			}
-			Physics2D.IgnoreLayerCollision(3, 7);
+			Physics2D.IgnoreLayerCollision(7, 3);
 
-			Debug.Log("targetpos: " + target);
 			if (Vector2.Distance(transform.position, target.position) > attackRange) // if not within attacking range, move toward player
 			{
 				anim.SetFloat("Speed", maxspeed);
