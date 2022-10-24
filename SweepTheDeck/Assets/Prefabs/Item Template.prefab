@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1488825282868255105}
   - component: {fileID: 8083204952799614206}
   - component: {fileID: 453964148582190022}
-  - component: {fileID: 7178401705275718186}
+  - component: {fileID: 6314048847373584614}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -87,19 +87,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7178401705275718186}
-        m_TargetAssemblyTypeName: EquipItem, Assembly-CSharp
-        m_MethodName: toggleEquip
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1351444815956489539}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!222 &453964148582190022
 CanvasRenderer:
@@ -109,7 +97,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266502082040246609}
   m_CullTransparentMesh: 1
---- !u!114 &7178401705275718186
+--- !u!114 &6314048847373584614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +106,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 266502082040246609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3873ecbcdad92e141888d87b5e5ff3c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEquipped: 0
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6746981878222138903, guid: 66fae13fc3d29c14f9d500386303f9d6, type: 3}
+          m_TargetAssemblyTypeName: ItemSettings, Assembly-CSharp
+          m_MethodName: EquipToggle
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &438554547353710863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,13 +1247,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
+        - m_Target: {fileID: 5323276256388942271, guid: 66fae13fc3d29c14f9d500386303f9d6, type: 3}
+          m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+          m_MethodName: PurchaseItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

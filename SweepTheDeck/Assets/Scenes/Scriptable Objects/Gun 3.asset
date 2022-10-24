@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c6bd6ef8eb0d94a84fbdfb4c2120b0, type: 3}
-  m_Name: Sword 4
+  m_Script: {fileID: 11500000, guid: 4b3b49c2d17a660458ff3f1d8d2bca3a, type: 3}
+  m_Name: Gun 3
   m_EditorClassIdentifier: 
-  title: Sabre
-  stats: 45
-  cost: 20
-  category: Sword
+  ID: 6
+  title: 
+  cost: 0
+  stats: 0
+  category: GUN
+  purchased: 0
