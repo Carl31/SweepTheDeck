@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy_Behaviour>().takeDamage(attackDamage);
+            //enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
 
@@ -135,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             coins++;
             Debug.Log("Player coins: " + coins); // for debugging
+            CoinCounter.instance.UpdateCount(1);
         }
     }
     void die()
@@ -186,4 +188,9 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt(COINS, coins);
     }
 
+
+    void OnDisable()
+    {
+        setCoins(coins);
+    }
 }

@@ -28,6 +28,10 @@ public class Enemy_Behaviour : MonoBehaviour
 
 	public LayerMask playerLayers;
 
+	public GameObject coinPref; // coin prefabs
+
+	public Enemy enemy;
+
 	//--
 	void Start()
 	{
@@ -104,10 +108,8 @@ public class Enemy_Behaviour : MonoBehaviour
 			}
 		}
 		else
-		{ 
-			anim.SetBool("IsDead", true);
-			maxspeed = 0;
-			this.enabled = false;
+		{
+			//die();
 			Destroy(gameObject);
 		}
     }
@@ -144,20 +146,41 @@ public class Enemy_Behaviour : MonoBehaviour
 		if (currentHealth <= 0 && isDead == false)
 		{
 			Debug.Log("Enemy died!");
+			//anim.SetBool("IsDead", true);
+
+			for (int i = 0; i < enemy.gold; i++)
+            {
+				Instantiate(coinPref, transform.position, Quaternion.identity);
+				coinPref.transform.localScale = new Vector3(7f, 7f, 0.0f);
+				coinPref.GetComponent<Rigidbody2D>().AddForce(new Vector2(100f, 100f), ForceMode2D.Impulse);
+				//coinPref.GetComponent<Rigidbody2D>().velocity = new Vector2(10f, 10f);
+			}
+				
+
 			isDead = true;
+			Destroy(gameObject);
+
+			/*			if (isDead)
+						{
+							yield return new WaitForSeconds(3.0f);
+							Destroy(gameObject);
+						}*/
+
 		}
 	}
-	
-	// Die
-	void die()
-	{
-		if (!isDead)
+
+    // Die
+    /*IEnumerator die()
+    {
+        if (!isDead)
         {
 			anim.SetBool("IsDead", true);
-			isDead = true;
 			maxspeed = 0;
+			this.enabled = false;
+
+			yield return new WaitForSeconds(3.0f);
 			Destroy(gameObject);
 		}
-	}
+    }*/
 
 }

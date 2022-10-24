@@ -585,6 +585,8 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 128
+  coinPref: {fileID: 8754928551025183030, guid: 318ba77bd36955a4586f11f376a77599, type: 3}
+  enemy: {fileID: 5354733741198964841}
 --- !u!114 &5354733741198964841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,7 +600,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8596946706197867479}
-  enemyPrefab: {fileID: 8596946706197867473}
+  coinPref: {fileID: 8754928551025183030, guid: 318ba77bd36955a4586f11f376a77599, type: 3}
+  game: {fileID: 8596946706197867473}
+  isDead: 0
   speed: 2
   maxHealth: 100
   currentHealth: 0
