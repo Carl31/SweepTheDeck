@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:SweepTheDeck/Assets/Scripts.meta
 guid: 1a3d873e64ddc294d8956c8b276ff3b6
 ========
 guid: 5b2d41ce0c6d037459fe810db7b8bf48
 >>>>>>>> origin/screenDevelopment:SweepTheDeck/Assets/Adaptive Performance.meta
+=======
+guid: 5b2d41ce0c6d037459fe810db7b8bf48
+>>>>>>> CharacterDevelopment
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
