@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    //public EnemyFactory factory;
+    public GameObject game;
 
     public enum WaveState {  SPAWNING, WAITING, COUNTING };
         // SPAWNING - wave is in the process of spawning specified number of enemies
@@ -20,10 +22,16 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name; // for name of each wave
-        public Transform enemy; // reference to prefab that we want to instantiate at each spawn point - NOTE: will have to have reference an enemy constructor for multiple enemy types!
+        //public Enemy enemy; // reference to prefab that we want to instantiate at each spawn point - NOTE: will have to have reference an enemy constructor for multiple enemy types!
         public int enemyAmount; // num of enemy spawns per wave
         public float spawnRate; // enemy spawn rate 
+        public int difficulty;
+    }
 
+    public GameObject[] enemyPrefs; // enemy prefabs
+    foreach (GameObject enemy in enemyPrefs)
+    {
+        enemy.transform.SetParent(game.transform);
     }
 
     public Transform[] enemySpawnPoints; // array of enemy spawn points (in our case, only left and right side of screen).
@@ -80,7 +88,10 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < wave.enemyAmount; i++) // spawn all enemies
         {
-            SpawnEnemy(wave.enemy);
+            Enemy temp = EnemyFactory.AssignEnemyStats(game, "zombie", wave.difficulty); // creates new enemy using factory constructor
+            //temp.enemyPrefab.Transform = wave.trans;
+            Debug.Log(temp);
+            SpawnEnemy(temp);
             yield return new WaitForSeconds(1f / wave.spawnRate); // applies specified enemy spawn delay (i.e the whole purpose of using IEnumerator)
         }
 
@@ -89,17 +100,20 @@ public class WaveSpawner : MonoBehaviour
         yield break; // returns nothing -- avoids error since IEnumerator functions need to return a value
     }
 
-    void SpawnEnemy(Transform enemy) // spawns an enemy
+    void SpawnEnemy(Enemy enemy) // spawns an enemy
     {
         // spawn enemy here
         Debug.Log("Spawning enemy: " + enemy.name);
 
         int spawnSide = Random.Range(0, enemySpawnPoints.Length);
-        enemy.transform.localScale = new Vector3(-2.6f, 2.6f, 0.0f);
+        enemy.enemyPrefab.transform.localScale = new Vector3(-4f, 4f, 0.0f); // scaling enemy appropriately
 
         Transform currentSpawnPoint = enemySpawnPoints[spawnSide]; // spawsn enemy on either left or right of screen (randomly)
-        currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f);
-        Instantiate(enemy, currentSpawnPoint.position, currentSpawnPoint.rotation);
+        currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f); // to have enemy spawn directly on ground
+
+        //Debug.Log("1");
+        Instantiate(enemy.enemyPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation);
+        //Debug.Log("2");
     }
 
     bool IsAnEnemyAlive() // returns if there are any more enemies left in the wave

@@ -39,16 +39,19 @@ public class Enemy_Behaviour : MonoBehaviour
 		//anim.SetBool("walk", false);//Walking animation is deactivated
 		anim.SetBool("IsDead", false);//Dying animation is deactivated
 		anim.SetBool("jump", false);//Jumping animation is deactivated
+
+		// getting reference to player object
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-		Physics2D.IgnoreLayerCollision(3, 7);
+
+		Physics2D.IgnoreLayerCollision(3, 7); // switch around
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
-		//if (coll.gameObject.tag == "Ground"){//################Important, the floor Tag must be "Ground" to detect the collision!!!!
+		if (coll.gameObject.tag == "Ground"){//################Important, the floor Tag must be "Ground" to detect the collision!!!!
 		jumping = false;
 		anim.SetBool("jump", false);
-		//}
+		}
 	}
 
 	void Update()
@@ -56,68 +59,32 @@ public class Enemy_Behaviour : MonoBehaviour
 		cooldownTimer += Time.deltaTime; // increment timer
 
 		//-- Attack animation off
-		if (anim.GetCurrentAnimatorStateInfo(0).IsName("attacking"))
+		/*if (anim.GetCurrentAnimatorStateInfo(0).IsName("attacking"))
 		{
 		}
 		else
 		{
 			anim.SetBool("attack", false);
-		}
-		//--
+		}*/
+
 		//Debug.Log ("+---- " + aux);
 
 		//--
 		if (isDead == false)
 		{
-			// UNNECESSARY CODE ... 
-
-			/*//--JUMPING
-            if (Input.GetMouseButtonDown(0))
-            {
-                anim.SetBool("attack", true);
-                anim.Play("attacking", -1, 0f);
-            }
-            if (Input.GetButtonDown("Jump"))
-            {
-                if (jumping == false)
-                {//only once time each jump
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 200));
-                    jumping = true;
-                    anim.SetBool("jump", true);
-                }
-            }
-            //--END JUMPING
-            //--WALKING
-            float move = Input.GetAxis("Horizontal");
-            GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxspeed, GetComponent<Rigidbody2D>().velocity.y);
-            //--
-            if (move > 0)
-            {//Go right
-                anim.SetBool("walk", true);//Walking animation is activated
-                if (faceright == false)
-                {
-                    Flip();
-                }
-            }
-            if (move == 0)
-            {//Stop
-                anim.SetBool("walk", false);
-            }
-            if ((move < 0))
-            {//Go left
-                anim.SetBool("walk", true);
-                if (faceright == true)
-                {
-                    Flip();
-                }
-            }
-            //END WALKING*/
-
-			//GetComponent<Rigidbody2D>().velocity = movement * maxspeed;
-
-
-
 			// MOVEMENT
+				// to check that target reference isn't null
+			if (target == null)
+			{
+				target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+				if (target == null)
+                {
+					Debug.Log("NULL TARGET");
+				}	
+			}
+			Physics2D.IgnoreLayerCollision(3, 7);
+
+			Debug.Log("targetpos: " + target);
 			if (Vector2.Distance(transform.position, target.position) > attackRange) // if not within attacking range, move toward player
 			{
 				anim.SetFloat("Speed", maxspeed);
