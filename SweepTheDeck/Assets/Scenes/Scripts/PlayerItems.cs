@@ -7,17 +7,17 @@ using UnityEngine.UI;
 public class PlayerItems : MonoBehaviour
 {
     public static PlayerItems instance;
-    bool[] acquiredItems;
-    int coins;
-
     public Sword defaultSword; public Gun defaultGun; public Armor defaultArmor; public Skill defaultSkill;
 
+    int coins;
+    string acquiredItems;
     Sword sword;
     Gun gun;
     Armor armor;
     Skill skill;
 
     public const string PLAYER_COINS = "PlayerCoins";
+    public const string PLAYER_ITEMS = "PlayerItems";
     public const string PLAYER_SWORD = "PlayerSword";
     public const string PLAYER_GUN = "PlayerGun";
     public const string PLAYER_ARMOR = "PlayerArmor";
@@ -29,18 +29,19 @@ public class PlayerItems : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            acquiredItems = new bool[12];
+            instance.coins = 0;
+            instance.acquiredItems = "000000000000";
             instance.sword = defaultSword;
             instance.gun = defaultGun;
             instance.armor = defaultArmor;
             instance.skill = defaultSkill;
-            instance.coins = 0;
             PlayerPrefs.SetInt(PLAYER_COINS, 100);
+            PlayerPrefs.SetString(PLAYER_ITEMS, acquiredItems);
             PlayerPrefs.SetInt(PLAYER_SWORD, -1);
             PlayerPrefs.SetInt(PLAYER_GUN, -1);
             PlayerPrefs.SetInt(PLAYER_ARMOR, -1);
             PlayerPrefs.SetInt(PLAYER_SKILL, -1);
-            PlayerPrefs.SetString(PLAYER_RESOURCE, "ShantyPirateModel\\00");
+            PlayerPrefs.SetString(PLAYER_RESOURCE, "ShantyPirateModel\\0");
         }
         else
         {
@@ -61,25 +62,22 @@ public class PlayerItems : MonoBehaviour
             playerModel.GetComponent<Image>().sprite = sprite;
         }
     }
-    public bool[] GetAcquiredItems()
+    public string GetAcquiredItems()
     {
         return acquiredItems;
     }
-    public void SetAcquiredItems(bool[] b)
+    public void SetAcquiredItems(string k)
     {
-        acquiredItems = b;
+        acquiredItems = k;
     }
-    
     public int GetCoins()
     {
         return coins;
     }
-
     public void SetCoins(int c)
     {
         coins = c;
     }
-
     public Sword GetSword()
     {
         return sword;
@@ -112,6 +110,7 @@ public class PlayerItems : MonoBehaviour
     {
         skill = s;
     }
+
     string SetPlayerModel()
     {
         string fileName = "ShantyPirateModel\\0";

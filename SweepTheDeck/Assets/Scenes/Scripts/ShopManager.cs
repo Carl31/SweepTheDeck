@@ -16,21 +16,24 @@ public class ShopManager : MonoBehaviour
     public GameObject playerModel;
 
     int coins;
-    bool[] acquiredItems;
+    bool[] acquiredItems = new bool[12];
 
     void Awake()
     {
-        if (PlayerItems.instance.GetAcquiredItems().Length == 0)
+        string s = PlayerItems.instance.GetAcquiredItems();
+        if (s.Length == 0 || s == null)
+        
             acquiredItems = new bool[shopItems.Length];
-        else 
-            acquiredItems = PlayerItems.instance.GetAcquiredItems();
-        coins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS, 5000); //change this later
-        coinUI.text = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS).ToString();
+        else
+            ApplyKeyToArray(PlayerItems.instance.GetAcquiredItems());
+        
         SetPlayerModel();
         CheckPurchaseable();
         CheckPurchased();
         LoadPanels();
         LoadNewCategory();
+        coins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS, 5000); //change this later
+        coinUI.text = coins.ToString();
     }
 
     public void addCoins()
@@ -98,10 +101,10 @@ public class ShopManager : MonoBehaviour
             acquiredItems[btnNo] = true;
         }
     }
-    
+
     void CheckPurchased()
     {
-        for(int i = 0; i < acquiredItems.Length; i++)
+        for (int i = 0; i < acquiredItems.Length; i++)
         {
             if (acquiredItems[i])
                 buyButtonGO[i].SetActive(false);
@@ -117,9 +120,11 @@ public class ShopManager : MonoBehaviour
         string fileName = "ShantyPirateModel\\0";
         //rank: default = 0; gold = 1; platinum = 2; diamond = 3;
         int objectRank = PlayerPrefs.GetInt(PlayerItems.PLAYER_SWORD, -1);
-        if (objectRank != -1) { objectRank %= 3; } objectRank++;
+        if (objectRank != -1) { objectRank %= 3; }
+        objectRank++;
         int armorRank = PlayerPrefs.GetInt(PlayerItems.PLAYER_ARMOR, -1);
-        if (armorRank != -1) { armorRank %= 3; } armorRank++;
+        if (armorRank != -1) { armorRank %= 3; }
+        armorRank++;
         fileName += objectRank.ToString() + armorRank.ToString();
         PlayerPrefs.SetString(PlayerItems.PLAYER_RESOURCE, fileName);
         //Debug.Log(fileName);
@@ -131,10 +136,42 @@ public class ShopManager : MonoBehaviour
     {
         AudioManager.instance.PlaySelectCategorySFX();
     }
+    void ApplyKeyToArray(string key)
+    {
+        for (int i = 0; i < key.Length; i++)
+        {
+            if (int.Parse(key[i].ToString()) == 1)
+            {
+                acquiredItems[i] = true;
+            }
+            else
+            {
+                acquiredItems[i] = false;
+            }
+        }
+    }
+
+    string ApplyArrayToKey()
+    {
+        string key = "";
+        for (int i = 0; i < acquiredItems.Length; i++)
+        {
+            if (acquiredItems[i])
+            {
+                key += "1";
+            }
+            else
+            {
+                key += "0";
+            }
+        }
+        return key;
+    }
 
     void OnDisable()
     {
         PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, coins);
-        PlayerItems.instance.SetAcquiredItems(acquiredItems);
+        PlayerItems.instance.SetAcquiredItems(ApplyArrayToKey());
+        PlayerPrefs.SetString(PlayerItems.PLAYER_ITEMS, PlayerItems.instance.GetAcquiredItems());
     }
 }

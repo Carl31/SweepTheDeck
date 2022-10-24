@@ -25,10 +25,6 @@ public class ItemSettings : MonoBehaviour
 
     void OnDisable()
     {
-        //Debug.Log(PlayerItems.instance.GetSword().title);
-        //Debug.Log(PlayerItems.instance.GetGun().title);
-        //Debug.Log(PlayerItems.instance.GetArmor().title);
-        //Debug.Log(PlayerItems.instance.GetSkill().title);
         PlayerPrefs.Save();
     }
 
@@ -39,28 +35,28 @@ public class ItemSettings : MonoBehaviour
             switch (itemList[i].category)
             {
                 case "SWORD":
-                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_SWORD, 0))
+                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_SWORD, -1))
                         toggles[i].isOn = true;
                     toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
                     swordGroup.RegisterToggle(toggles[i]);
                     items[i] = "SWORD";
                     break;
                 case "GUN":
-                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_GUN, 0))
+                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_GUN, -1))
                         toggles[i].isOn = true;
                     toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
                     gunGroup.RegisterToggle(toggles[i]);
                     items[i] = "GUN";
                     break;
                 case "ARMOR":
-                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_ARMOR, 0))
+                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_ARMOR, -1))
                         toggles[i].isOn = true;
                     toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
                     armorGroup.RegisterToggle(toggles[i]);
                     items[i] = "ARMOR";
                     break;
                 case "SKILL":
-                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_SKILL, 0))
+                    if (i == PlayerPrefs.GetInt(PlayerItems.PLAYER_SKILL, -1))
                         toggles[i].isOn = true;
                     toggles[i].GetComponentInChildren<TMP_Text>().SetText(toggles[i].isOn ? "UNEQUIP" : "EQUIP");
                     skillGroup.RegisterToggle(toggles[i]);
