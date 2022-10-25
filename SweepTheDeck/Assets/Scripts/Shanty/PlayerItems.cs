@@ -35,7 +35,7 @@ public class PlayerItems : MonoBehaviour
             instance.gun = defaultGun;
             instance.armor = defaultArmor;
             instance.skill = defaultSkill;
-            PlayerPrefs.SetInt(PLAYER_COINS, 100);
+            PlayerPrefs.SetInt(PLAYER_COINS, 0);
             PlayerPrefs.SetString(PLAYER_ITEMS, acquiredItems);
             PlayerPrefs.SetInt(PLAYER_SWORD, -1);
             PlayerPrefs.SetInt(PLAYER_GUN, -1);
