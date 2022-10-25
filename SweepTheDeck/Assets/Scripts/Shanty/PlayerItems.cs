@@ -113,7 +113,7 @@ public class PlayerItems : MonoBehaviour
 
     string SetPlayerModel()
     {
-        string fileName = "ShantyPirateModel\\0";
+        string fileName = "PirateModel\\0";
         //rank: default = 0; gold = 1; platinum = 2; diamond = 3;
         int objectRank = PlayerPrefs.GetInt(PlayerItems.PLAYER_SWORD, -1);
         if (objectRank != -1) { objectRank %= 3; }
@@ -123,7 +123,7 @@ public class PlayerItems : MonoBehaviour
         armorRank++;
         fileName += objectRank.ToString() + armorRank.ToString();
         PlayerPrefs.SetString(PlayerItems.PLAYER_RESOURCE, fileName);
-        //Debug.Log(fileName);
+        Debug.Log(fileName);
         return fileName;
     }
 }
