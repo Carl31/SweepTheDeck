@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
     path: Assets/Scenes/Battle.unity
-    guid: 9dca9e8814797fe47b14a228416999c3
+    guid: 7b8422e06a1b10c4898b6ad74b10c849
   - enabled: 1
     path: Assets/Scenes/Shanty.unity
     guid: aae6983af49177040af143e44c92b78a
