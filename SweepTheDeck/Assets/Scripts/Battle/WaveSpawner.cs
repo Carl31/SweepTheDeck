@@ -25,13 +25,21 @@ public class WaveSpawner : MonoBehaviour
         public int enemyAmount; // num of enemy spawns per wave
         public float spawnRate; // enemy spawn rate 
         public int difficulty;
+
+        public Wave()
+        {
+            this.difficulty = 1;
+            this.enemyAmount = 1;
+            this.name = "temp";
+            this.spawnRate = 1;
+        }
     }
 
     public GameObject enemyPref; // enemy prefabs
     public GameObject coinPref; // enemy prefabs
 
     public Transform[] enemySpawnPoints; // array of enemy spawn points (in our case, only left and right side of screen).
-    public Wave[] waves; // our array of waves
+    private Wave[] waves; // our array of waves
     private int nextWave = 0; // stores index of next wave to be executed
     public float waveInterval = 5f; // time between waves (seconds)
     private float waveCountdown;
@@ -47,6 +55,18 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // create waves
+        waves = new Wave[50]; // max wave 50 - player will definitely die before this wave
+        for (int i = 0; i < 50; i++)
+        {
+            waves[i] = new Wave();
+            waves[i].difficulty = (i + 1) - (i/2);
+            waves[i].enemyAmount = (i + 1) - (i / 2);
+            waves[i].name = "Wave " + i + 1;
+            waves[i].spawnRate = 2;
+
+        }
+
         if (enemySpawnPoints.Length == 0)
         {
             Debug.Log("Error: no spawn points have been made!");
@@ -108,12 +128,10 @@ public class WaveSpawner : MonoBehaviour
             tempObj.transform.SetParent(game.transform);
 
             enemyPref.GetComponent<Enemy>().speed = wave.difficulty * 2;
-            enemyPref.GetComponent<Enemy>().maxHealth = wave.difficulty * 10;
+            enemyPref.GetComponent<Enemy>().maxHealth = 100 + wave.difficulty * 10;
             enemyPref.GetComponent<Enemy>().damage = wave.difficulty * 10;
             enemyPref.GetComponent<Enemy>().enemyName = "zombie";
             enemyPref.GetComponent<Enemy>().gold = wave.difficulty;
-
-            
 
             //Enemy temp = AssignEnemyStats(game, "zombie", wave.difficulty); // creates new enemy using factory constructor
             Debug.Log(enemyPref.GetComponent<Enemy>());
@@ -180,6 +198,7 @@ public class WaveSpawner : MonoBehaviour
         }
         nextWave++;
         waveText.SetText("WAVE: " + (nextWave+1).ToString());
+        PlayerPrefs.SetInt(PlayerItems.PLAYER_SCORE, (nextWave + 1));
     }
 
     /*public Enemy AssignEnemyStats(GameObject enemy, string type, int difficulty)

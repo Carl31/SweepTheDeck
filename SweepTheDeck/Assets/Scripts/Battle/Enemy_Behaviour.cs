@@ -35,7 +35,7 @@ public class Enemy_Behaviour : MonoBehaviour
 	//--
 	void Start()
 	{
-		currentHealth = MaxHealth;
+		currentHealth = enemy.maxHealth; //MaxHealth;
 		Healthbar.SetHealth(currentHealth, MaxHealth);
 		maxspeed = 2f;//Set walk speed
 		faceright = true;//Default right side

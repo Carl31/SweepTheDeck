@@ -32,15 +32,8 @@ public class ShopManager : MonoBehaviour
         CheckPurchased();
         LoadPanels();
         LoadNewCategory();
-        coins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS, 5000); //change this later
+        coins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS);
         coinUI.text = coins.ToString();
-    }
-
-    public void addCoins()
-    {
-        coins += 100;
-        coinUI.text = coins.ToString();
-        CheckPurchaseable();
     }
 
     public void LoadPanels()

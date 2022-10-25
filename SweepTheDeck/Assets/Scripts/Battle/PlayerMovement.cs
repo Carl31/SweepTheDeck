@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool grounded;
 
-    public const string COINS = "coins"; // global coin variable
     public int coins; // coins collected in this game instance
 
 
@@ -47,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         moveLeft = false;
         moveRight = false;
         animator = GetComponent<Animator>();
-        coins = getCoins();
+        coins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS, 0);
     }
 
     public void MoveLeft()
@@ -187,27 +186,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
-    // for retrieving player coin count
-    public int getCoins()
-    {
-        int coins = PlayerPrefs.GetInt(COINS);
-        return coins;
-    }
-
-    // for setting player coin count (after each round or at death)
-    public void setCoins(int coins)
-    {
-        PlayerPrefs.SetInt(COINS, coins);
-    }
     void GameOver()
     {
         Debug.Log(coins);
+        PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, coins);
         playFabManager.SendLeaderboard(coins);
         Debug.Log("game over");
     }
-    void OnDisable()
+
+    private void OnDisable()
     {
-        setCoins(coins);
+        Debug.Log(coins);
+        PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, coins);
     }
 }
