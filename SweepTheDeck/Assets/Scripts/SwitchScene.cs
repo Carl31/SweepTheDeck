@@ -68,8 +68,9 @@ public class SwitchScene : MonoBehaviour
     public void LoadLeaderboard()
     {
         ButtonClick();
-        //SetPrevScene(SceneManager.GetActiveScene().buildIndex);
-        //SetCurrentScene(4); //SceneManager.GetSceneByName("Leaderboard").buildIndex;
+        SetPrevScene(SceneManager.GetActiveScene().buildIndex);
+        SetCurrentScene(4); 
+        SceneManager.LoadScene("Leaderboard");
         //Debug.Log("LoadLeaderboard");
     }
 

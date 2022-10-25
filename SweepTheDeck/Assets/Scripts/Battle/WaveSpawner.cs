@@ -39,6 +39,11 @@ public class WaveSpawner : MonoBehaviour
     private float enemySearchCountdown = 1f; // see IsAnEnemyAlive method
     public TMP_Text waveText;
 
+    public int GetScore()
+    {
+        return nextWave + 1;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,6 +104,7 @@ public class WaveSpawner : MonoBehaviour
             //currentSpawnPoint.position += new Vector3(0f, -0.1f, 0f); // to have enemy spawn directly on ground
 
             GameObject tempObj = Instantiate(enemyPref, currentSpawnPoint.position, currentSpawnPoint.rotation);
+            AudioManager.instance.PlayEnemySpawn();
             tempObj.transform.SetParent(game.transform);
 
             enemyPref.GetComponent<Enemy>().speed = wave.difficulty * 2;
@@ -163,7 +169,7 @@ public class WaveSpawner : MonoBehaviour
     void NewWave()
     {
         Debug.Log("Wave completed!");
-
+        AudioManager.instance.PlayWaveComplete();
         state = WaveState.COUNTING;
         waveCountdown = waveInterval;
 

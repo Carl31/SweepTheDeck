@@ -129,6 +129,7 @@ public class Enemy_Behaviour : MonoBehaviour
 		{
 			cooldownTimer = 0f;
 			anim.SetTrigger("Attack");
+			AudioManager.instance.PlayAttackEnemy();
 			foreach (Collider2D player in hitPlayer)
 			{
 				player.GetComponent<PlayerMovement>().takeDamage(attackDamage);
@@ -140,6 +141,7 @@ public class Enemy_Behaviour : MonoBehaviour
 	// When enemy takes damage
 	public void takeDamage(float damage)
 	{
+		AudioManager.instance.PlayDamageEnemy();
 		currentHealth -= damage;
 		Healthbar.SetHealth(currentHealth, MaxHealth);
 		if (currentHealth <= 0 && isDead == false)
@@ -168,7 +170,7 @@ public class Enemy_Behaviour : MonoBehaviour
 		}
 	}
 
-    // Die
+    // die
     /*IEnumerator die()
     {
         if (!isDead)
