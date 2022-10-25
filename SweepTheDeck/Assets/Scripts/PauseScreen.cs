@@ -37,10 +37,6 @@ public class PauseScreen : SwitchScene
         AudioListener.pause = true;
         gameIsPaused = true;
     }
-    public void Restart()
-    {
-        //not my problem lmfao
-    }
 
     public void SettingsFromPause() //extends SwitchScenes so that the song resumes as it switches to a different scene
     {
