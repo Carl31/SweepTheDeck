@@ -10,7 +10,16 @@ public class PauseScreen : SwitchScene
 
     private void Start()
     {
-        pauseScreenUI.SetActive(false);
+        pauseScreenUI.SetActive(gameIsPaused);
+        if(gameIsPaused == true)
+        {
+            Time.timeScale = 0;
+            AudioListener.pause = true;
+        } else
+        {
+            Time.timeScale = 1.0f;
+            AudioListener.pause = false;
+        }
     }
 
     public void Resume()
@@ -35,12 +44,14 @@ public class PauseScreen : SwitchScene
 
     public void SettingsFromPause() //extends SwitchScenes so that the song resumes as it switches to a different scene
     {
+        Debug.Log("clicked set");
         AudioListener.pause = false;
         LoadSettings();
     }
 
     public void MainMenuFromPause() //extends SwitchScenes so that the song resumes as it switches to a different scene
     {
+        gameIsPaused = false;
         AudioListener.pause = false;
         LoadMainMenu();
     }

@@ -25,7 +25,7 @@ public class SwitchScene : MonoBehaviour
     public void BackButton() //for settings + shanty
     {
         ButtonClick();
-        int returnSceneIndex = PlayerPrefs.GetInt(PREV_PREV_SCENE);
+        int returnSceneIndex = PlayerPrefs.GetInt(PREV_PREV_SCENE, 0);
         Debug.Log("came from scene " + returnSceneIndex);
         SetCurrentScene(returnSceneIndex);
         SceneManager.LoadScene(returnSceneIndex);
@@ -52,7 +52,7 @@ public class SwitchScene : MonoBehaviour
         ButtonClick();
         SetCurrentScene(2);
         SceneManager.LoadScene("Shanty");
-        PlayerPrefs.SetInt(PREV_PREV_SCENE, PlayerPrefs.GetInt(PREV_SCENE));
+        PlayerPrefs.SetInt(PREV_PREV_SCENE, PlayerPrefs.GetInt(PREV_SCENE, 0));
         //Debug.Log("Shanty");
     }
 
@@ -61,7 +61,7 @@ public class SwitchScene : MonoBehaviour
         ButtonClick();
         SetCurrentScene(3);
         SceneManager.LoadScene("Settings");
-        PlayerPrefs.SetInt(PREV_PREV_SCENE, PlayerPrefs.GetInt(PREV_SCENE));
+        PlayerPrefs.SetInt(PREV_PREV_SCENE, PlayerPrefs.GetInt(PREV_SCENE, 0));
         //Debug.Log("Settings");
     }
 
