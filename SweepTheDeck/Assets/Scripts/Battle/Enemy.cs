@@ -49,7 +49,6 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
 
         animator.SetTrigger("Hurt");
-
         //player hurt animation.
 
         if (currentHealth <= 0)
@@ -69,7 +68,6 @@ public class Enemy : MonoBehaviour
             Instantiate(coinPref, transform.position, Quaternion.identity);
             coinPref.transform.localScale = new Vector3(7f, 7f, 0.0f);
         }
-        
 
         Debug.Log("Coin spawned");
 

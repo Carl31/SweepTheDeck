@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: ce2aea616960722419cdd10202d2d496, type: 2}
-  audioSource: {fileID: 8794881435882787701}
-  uiAudioSource: {fileID: 6133223378038527252}
+  bgmSource: {fileID: 8794881435882787701}
+  sfxSource: {fileID: 8794881435882787701}
   bgmClips:
   - {fileID: 8300000, guid: e71e4e4903e7241458607f9e04030eef, type: 3}
   - {fileID: 8300000, guid: efdb5332bde59604a9b7191cf4ab3e46, type: 3}
@@ -187,6 +187,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2839b8fa381d08d46a288372a095ebf9, type: 3}
   - {fileID: 8300000, guid: 69a7bd7bf0f7a0c4bbcae687bdb62631, type: 3}
   - {fileID: 8300000, guid: 513a0b49ee51b6c41af6ab27463ce5a9, type: 3}
+  - {fileID: 8300000, guid: e585032e620dbd146afe265b3930b80c, type: 3}
+  - {fileID: 8300000, guid: 7b9eeafc55f19624d8f284d0046d85f5, type: 3}
+  - {fileID: 8300000, guid: b0567c0cdb1834841b4c4e9513c996d3, type: 3}
+  - {fileID: 8300000, guid: ce85022893dc8274ba10ea042d4c7b6d, type: 3}
+  - {fileID: 8300000, guid: d62bdfb3c7d3f454891e5fa812cb9c03, type: 3}
+  - {fileID: 8300000, guid: e2c87c6fc30e29b428b6710112bcb50c, type: 3}
+  - {fileID: 8300000, guid: 3439b19396b9d104e96939bdfff00c12, type: 3}
+  - {fileID: 8300000, guid: 928cc17c7c56ece4599933c4ccaeaae8, type: 3}
+  - {fileID: 8300000, guid: ae0bd2d76c661d84a9a93d6a1ef8260e, type: 3}
+  - {fileID: 8300000, guid: db519d9bc42fa27418e74302f3bf6b6b, type: 3}
+  - {fileID: 8300000, guid: 683d7b07d2f237343b2e4894f56ab7a2, type: 3}
 --- !u!82 &8794881435882787701
 AudioSource:
   m_ObjectHideFlags: 0

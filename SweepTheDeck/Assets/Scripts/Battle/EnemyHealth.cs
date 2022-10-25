@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        // Die animation
+        // die animation
         // Make enemy stop doing stuff
 
         /*animator.SetBool("IsDead", true);

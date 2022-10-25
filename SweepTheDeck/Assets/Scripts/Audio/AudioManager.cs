@@ -8,9 +8,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     [SerializeField] AudioMixer mixer;
-    [SerializeField] AudioSource audioSource; //bgm source
-    [SerializeField] AudioSource uiAudioSource; //sfx source
-    AudioClip uiAudioClip; //sfx clip
+    [SerializeField] AudioSource bgmSource; //bgm source
+    [SerializeField] AudioSource sfxSource; //sfx source
+    AudioClip sfxClip; //sfx clip
     public AudioClip[] bgmClips;
     public AudioClip[] sfxClips;
 
@@ -53,60 +53,104 @@ public class AudioManager : MonoBehaviour
                 source = bgmClips[0];
                 break;
         }
-        if(source != instance.audioSource.clip) 
+        if(source != instance.bgmSource.clip) 
         {
             //Debug.Log("doesnt match");
-            audioSource.enabled = false;
-            audioSource.clip = source;
-            audioSource.enabled = true;
+            bgmSource.enabled = false;
+            bgmSource.clip = source;
+            bgmSource.enabled = true;
         }
     }
     public void PlayButtonSFX() //general buttons
     {
-        uiAudioClip = sfxClips[0];
-        uiAudioSource.PlayOneShot(uiAudioClip);
+        sfxClip = sfxClips[0];
+        sfxSource.PlayOneShot(sfxClip);
     }
 
     //shanty UI
     public void PlayPurchaseSFX()
     {
-        uiAudioClip = sfxClips[1];
-        uiAudioSource.PlayOneShot(uiAudioClip);
+        sfxClip = sfxClips[1];
+        sfxSource.PlayOneShot(sfxClip);
     }
 
     public void PlayEquipSFX(bool isEquipped)
     {
         if(isEquipped)
-            uiAudioClip = sfxClips[2];
+            sfxClip = sfxClips[2];
         else
-            uiAudioClip = sfxClips[3];
-        uiAudioSource.PlayOneShot(uiAudioClip);
+            sfxClip = sfxClips[3];
+        sfxSource.PlayOneShot(sfxClip);
     }
 
     public void PlaySelectCategorySFX()
     {
-        uiAudioClip = sfxClips[4];
-        uiAudioSource.PlayOneShot(uiAudioClip);
+        sfxClip = sfxClips[4];
+        sfxSource.PlayOneShot(sfxClip);
     }
 
-    /*LIST OF PLAYER SFX
-     *WALK
-     *JUMP
-     *LAND AFTER JUMP
-     *ATTACK- VOICE
-     *ATTACK- SLASH
-     *ATTACK- GUN
-     *TAKE DAMAGE- VOICE
-     *TAKE DAMAGE- HIT
-     *DIE
-     *COLLECT COINS (maybe)
-     
-    public void AttackSFX() //LOL
+    public void PlayCoin()
     {
-        AudioClip clip = playerAudioClips[Random.Range(0, playerAudioClips.Count)];
+        sfxClip = sfxClips[5];
+        sfxSource.PlayOneShot(sfxClip);
+    }
 
-        playerAudioSource.PlayOneShot(clip);
-    }*/
+    public void PlayGunshot()
+    {
+        sfxClip = sfxClips[6];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+
+    public void PlayJump()
+    {
+        sfxClip = sfxClips[7];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+
+    public void PlayDamagePlayer()
+    {
+        sfxClip = sfxClips[8];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+    public void PlayPlayerDie()
+    {
+        sfxClip = sfxClips[9];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+
+    public void PlayWalk()
+    {
+        sfxClip = sfxClips[10];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+
+    public void PlayEnemySpawn()
+    {
+        sfxClip = sfxClips[11];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+
+    public void PlayDamageEnemy()
+    {
+        sfxClip = sfxClips[12];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+
+    public void PlayWaveComplete()
+    {
+        sfxClip = sfxClips[13];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+    public void PlayAttack()
+    {
+        sfxClip = sfxClips[14];
+        sfxSource.PlayOneShot(sfxClip);
+    }
+    public void PlayAttackEnemy()
+    {
+        sfxClip = sfxClips[15];
+        sfxSource.PlayOneShot(sfxClip);
+    }
 
     void LoadVolume() //volume saved in VolumeSettings.cs
     {

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayFabManager playFabManager;
+    //public int score;
+
     private Rigidbody2D rb;
 
     public float moveSpeed, jumpForce;
@@ -55,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+        AudioManager.instance.PlayWalk();
         //gameObject.transform.localScale = new Vector3(-180, 180, 180);
     }
     public void MoveRight()
@@ -65,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+        AudioManager.instance.PlayWalk();
         // gameObject.transform.localScale = new Vector3(180, 180, 180);
     }
 
@@ -85,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
             enemy.GetComponent<Enemy_Behaviour>().takeDamage(attackDamage);
             //enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
+        AudioManager.instance.PlayAttack();
     }
 
     public void takeDamage(float damage)
@@ -96,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
         {
             die();
         }
+        AudioManager.instance.PlayDamagePlayer();
     }
 
     public void Shoot()
@@ -103,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("Attack");
         //shooting stuff ;D
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        AudioManager.instance.PlayGunshot();
     }
 
     private void OnDrawGizmosSelected()
@@ -122,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
+        AudioManager.instance.PlayJump();
 
     }
 
@@ -130,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             animator.SetBool("IsJumping", false);
+            AudioManager.instance.PlayWalk();
         }
         else if (collision.gameObject.CompareTag("Coin"))
         {
@@ -137,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
             coins++;
             Debug.Log("Player coins: " + coins); // for debugging
             CoinCounter.instance.UpdateCount(1);
+            AudioManager.instance.PlayCoin();
         }
     }
     void die()
@@ -145,6 +156,8 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsDead", true);
             isDead = true;
+            AudioManager.instance.PlayPlayerDie();
+            GameOver();
             this.enabled = false;
             //Destroy(gameObject);
         }
@@ -187,8 +200,12 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerPrefs.SetInt(COINS, coins);
     }
-
-
+    void GameOver()
+    {
+        Debug.Log(coins);
+        playFabManager.SendLeaderboard(coins);
+        Debug.Log("game over");
+    }
     void OnDisable()
     {
         setCoins(coins);
