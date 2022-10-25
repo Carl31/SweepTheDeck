@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public PlayFabManager playFabManager;
+    //public int score;
 
-    [SerializeField] GameObject gameOverUI;
-    [SerializeField] TMP_Text scoreText;
     private Rigidbody2D rb;
 
     public float moveSpeed, jumpForce;
@@ -34,13 +32,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool grounded;
 
-    int coins; // coins collected in this game instance
+    public int coins; // coins collected in this game instance
 
 
     // Start is called before the first frame update
     void Start()
     {
-        gameOverUI.SetActive(false);
         currentHealth = MaxHealth;
         Healthbar.SetHealth(currentHealth, MaxHealth);
         rb = GetComponent<Rigidbody2D>();
@@ -49,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         moveLeft = false;
         moveRight = false;
         animator = GetComponent<Animator>();
+        coins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS, 0);
     }
 
     public void MoveLeft()
@@ -160,7 +158,6 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.instance.PlayPlayerDie();
             GameOver();
             this.enabled = false;
-            Time.timeScale = 0;
             //Destroy(gameObject);
         }
         //Destroy(gameObject);
@@ -189,14 +186,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-    
     void GameOver()
     {
-        int score = PlayerPrefs.GetInt(PlayerItems.PLAYER_SCORE, 0);
-        Debug.Log(score);
-        scoreText.SetText("SCORE: " + score);
-        gameOverUI.SetActive(true);
-        playFabManager.SendLeaderboard(score);
+        Debug.Log(coins);
+        PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, coins);
+        playFabManager.SendLeaderboard(coins);
         Debug.Log("game over");
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log(coins);
+        PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, coins);
     }
 }
