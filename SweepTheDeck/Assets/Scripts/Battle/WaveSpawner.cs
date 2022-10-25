@@ -133,8 +133,6 @@ public class WaveSpawner : MonoBehaviour
             enemyPref.GetComponent<Enemy>().enemyName = "zombie";
             enemyPref.GetComponent<Enemy>().gold = wave.difficulty;
 
-            
-
             //Enemy temp = AssignEnemyStats(game, "zombie", wave.difficulty); // creates new enemy using factory constructor
             Debug.Log(enemyPref.GetComponent<Enemy>());
             //SpawnEnemy(temp);
@@ -200,6 +198,7 @@ public class WaveSpawner : MonoBehaviour
         }
         nextWave++;
         waveText.SetText("WAVE: " + (nextWave+1).ToString());
+        PlayerPrefs.SetInt(PlayerItems.PLAYER_SCORE, (nextWave + 1));
     }
 
     /*public Enemy AssignEnemyStats(GameObject enemy, string type, int difficulty)

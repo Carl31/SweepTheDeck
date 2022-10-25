@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public PlayFabManager playFabManager;
 
-    public GameObject gameOverUI;
-    //public static bool gameOver = false;
-    //public int score;
-
+    [SerializeField] GameObject gameOverUI;
+    [SerializeField] TMP_Text scoreText;
     private Rigidbody2D rb;
 
     public float moveSpeed, jumpForce;
@@ -35,8 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool grounded;
 
-    public const string COINS = "coins"; // global coin variable
-    public int coins; // coins collected in this game instance
+    int coins; // coins collected in this game instance
 
 
     // Start is called before the first frame update
@@ -51,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         moveLeft = false;
         moveRight = false;
         animator = GetComponent<Animator>();
-        coins = getCoins();
     }
 
     public void MoveLeft()
@@ -163,7 +160,6 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.instance.PlayPlayerDie();
             GameOver();
             this.enabled = false;
-            gameOverUI.SetActive(true);
             Time.timeScale = 0;
             //Destroy(gameObject);
         }
@@ -193,27 +189,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
-    // for retrieving player coin count
-    public int getCoins()
-    {
-        int coins = PlayerPrefs.GetInt(COINS);
-        return coins;
-    }
-
-    // for setting player coin count (after each round or at death)
-    public void setCoins(int coins)
-    {
-        PlayerPrefs.SetInt(COINS, coins);
-    }
+    
     void GameOver()
     {
-        Debug.Log(coins);
-        playFabManager.SendLeaderboard(coins);
+        int score = PlayerPrefs.GetInt(PlayerItems.PLAYER_SCORE, 0);
+        Debug.Log(score);
+        scoreText.SetText("SCORE: " + score);
+        gameOverUI.SetActive(true);
+        playFabManager.SendLeaderboard(score);
         Debug.Log("game over");
-    }
-    void OnDisable()
-    {
-        setCoins(coins);
     }
 }
