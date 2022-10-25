@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayFabManager playFabManager;
+
+    public GameObject gameOverUI;
+    //public static bool gameOver = false;
     //public int score;
 
     private Rigidbody2D rb;
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameOverUI.SetActive(false);
         currentHealth = MaxHealth;
         Healthbar.SetHealth(currentHealth, MaxHealth);
         rb = GetComponent<Rigidbody2D>();
@@ -159,6 +163,8 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.instance.PlayPlayerDie();
             GameOver();
             this.enabled = false;
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0;
             //Destroy(gameObject);
         }
         //Destroy(gameObject);
