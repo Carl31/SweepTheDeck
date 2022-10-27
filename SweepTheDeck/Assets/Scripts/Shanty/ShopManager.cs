@@ -22,7 +22,6 @@ public class ShopManager : MonoBehaviour
     {
         string s = PlayerItems.instance.GetAcquiredItems();
         if (s.Length == 0 || s == null)
-        
             acquiredItems = new bool[shopItems.Length];
         else
             ApplyKeyToArray(PlayerItems.instance.GetAcquiredItems());
@@ -32,8 +31,9 @@ public class ShopManager : MonoBehaviour
         CheckPurchased();
         LoadPanels();
         LoadNewCategory();
+        Debug.Log(PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS));
         coins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS);
-        coinUI.text = coins.ToString();
+        coinUI.SetText(coins.ToString());
     }
 
     public void LoadPanels()

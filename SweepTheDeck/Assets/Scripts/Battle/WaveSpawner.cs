@@ -47,7 +47,7 @@ public class WaveSpawner : MonoBehaviour
     private float enemySearchCountdown = 1f; // see IsAnEnemyAlive method
     public TMP_Text waveText;
 
-    public int GetScore()
+    int GetScore()
     {
         return nextWave + 1;
     }
@@ -198,7 +198,7 @@ public class WaveSpawner : MonoBehaviour
         }
         nextWave++;
         waveText.SetText("WAVE: " + (nextWave+1).ToString());
-        PlayerPrefs.SetInt(PlayerItems.PLAYER_SCORE, (nextWave + 1));
+        PlayerPrefs.SetInt(PlayerItems.PLAYER_SCORE, GetScore());
     }
 
     /*public Enemy AssignEnemyStats(GameObject enemy, string type, int difficulty)

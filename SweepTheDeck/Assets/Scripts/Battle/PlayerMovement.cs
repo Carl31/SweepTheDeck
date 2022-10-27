@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
     public PlayFabManager playFabManager;
+    public GameObject gameOverScreen;
+    public TMP_Text gameScore;
     //public int score;
 
     private Rigidbody2D rb;
@@ -32,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool grounded;
 
-    public int coins; // coins collected in this game instance
+    int nCoins; //nCoins collected in this game instance
 
 
     // Start is called before the first frame update
@@ -46,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
         moveLeft = false;
         moveRight = false;
         animator = GetComponent<Animator>();
-        coins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS, 0);
+        nCoins = PlayerPrefs.GetInt(PlayerItems.PLAYER_COINS, 0);
+        gameOverScreen.SetActive(false);
     }
 
     public void MoveLeft()
@@ -143,8 +147,9 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
-            coins++;
-            Debug.Log("Player coins: " + coins); // for debugging
+            nCoins++;
+            PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, nCoins);
+            Debug.Log("Player nCoins: " + nCoins); // for debugging
             CoinCounter.instance.UpdateCount(1);
             AudioManager.instance.PlayCoin();
         }
@@ -188,15 +193,15 @@ public class PlayerMovement : MonoBehaviour
     }
     void GameOver()
     {
-        Debug.Log(coins);
-        PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, coins);
-        playFabManager.SendLeaderboard(coins);
+        int score = PlayerPrefs.GetInt(PlayerItems.PLAYER_SCORE, 0);
+        Debug.Log(score);
+        Debug.Log(nCoins);
+        PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, nCoins);
+        playFabManager.SendLeaderboard(score);
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        gameScore.SetText("Score: " + score);
+        gameOverScreen.SetActive(true);
         Debug.Log("game over");
-    }
-
-    private void OnDisable()
-    {
-        Debug.Log(coins);
-        PlayerPrefs.SetInt(PlayerItems.PLAYER_COINS, coins);
     }
 }

@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public string enemyName;
     public int damage;
-    public int gold; // number of coins dropped upon death -- need to implement this
+    public int gold; // number of nCoins dropped upon death -- need to implement this
 
     public Enemy(int speed, int maxHealth, int damage, string name, int gold)
     {
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         Debug.Log(IsCoin());
     }*/
 
-    bool IsCoin() // returns if there are any more coins
+    bool IsCoin() // returns if there are any more nCoins
     {
         GameObject[] tempArr = GameObject.FindGameObjectsWithTag("Coin");
         if (tempArr.Length == 0)

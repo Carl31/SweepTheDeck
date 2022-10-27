@@ -10,6 +10,7 @@ public class PlayerItems : MonoBehaviour
     public Sword defaultSword; public Gun defaultGun; public Armor defaultArmor; public Skill defaultSkill;
 
     int coins;
+    int score;
     string acquiredItems;
     Sword sword;
     Gun gun;
@@ -17,6 +18,7 @@ public class PlayerItems : MonoBehaviour
     Skill skill;
 
     public const string PLAYER_COINS = "PlayerCoins";
+    public const string PLAYER_SCORE = "PlayerScore";
     public const string PLAYER_ITEMS = "PlayerItems";
     public const string PLAYER_SWORD = "PlayerSword";
     public const string PLAYER_GUN = "PlayerGun";
@@ -35,7 +37,6 @@ public class PlayerItems : MonoBehaviour
             instance.gun = defaultGun;
             instance.armor = defaultArmor;
             instance.skill = defaultSkill;
-            PlayerPrefs.SetInt(PLAYER_COINS, 0);
             PlayerPrefs.SetString(PLAYER_ITEMS, acquiredItems);
             PlayerPrefs.SetInt(PLAYER_SWORD, -1);
             PlayerPrefs.SetInt(PLAYER_GUN, -1);
